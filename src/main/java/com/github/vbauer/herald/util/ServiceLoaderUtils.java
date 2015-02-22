@@ -1,7 +1,5 @@
 package com.github.vbauer.herald.util;
 
-import com.github.vbauer.herald.logger.LogFactory;
-
 import java.util.*;
 
 /**

@@ -1,7 +1,6 @@
 package com.github.vbauer.herald.bean;
 
 import com.github.vbauer.herald.annotation.Log;
-import org.springframework.stereotype.Component;
 
 /**
  * @author Vladislav Bauer

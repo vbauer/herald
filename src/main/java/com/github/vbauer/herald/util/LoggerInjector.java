@@ -52,7 +52,7 @@ public final class LoggerInjector {
         final Object bean, final Field field, final Collection<LogFactory> logFactories
     ) throws IllegalAccessException {
         final boolean isAccessible = field.isAccessible();
-        org.springframework.util.ReflectionUtils.makeAccessible(field);
+        ReflectionUtils.makeAccessible(field);
 
         try {
             final Log annotation = field.getAnnotation(Log.class);

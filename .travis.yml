@@ -1,0 +1,10 @@
+language: java
+script: mvn install -DskipTests=true -P checkstyle,pmd
+after_success:
+  - mvn clean cobertura:cobertura coveralls:report
+jdk:
+  - openjdk6
+  - oraclejdk7
+branches:
+  only:
+  - master
