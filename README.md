@@ -1,6 +1,24 @@
 
 # Herald [![Build Status](https://travis-ci.org/vbauer/herald.svg)](https://travis-ci.org/vbauer/herald) [![Coverage Status](https://coveralls.io/repos/vbauer/herald/badge.svg?branch=master)](https://coveralls.io/r/vbauer/herald?branch=master) [![Maven](https://img.shields.io/github/tag/vbauer/herald.svg?label=maven)](https://jitpack.io/#vbauer/herald)
 
+You can annotate any class field with a `@Log` annotation to let **Herald** inject appropriate logger in this field.
+
+Just forget about this code:
+```java
+private static final Logger LOGGER = LoggerFactory.getLogger(Foo.class);
+```
+
+Write less code, use short form:
+```java
+@Log
+private Logger logger;
+```
+
+The project is integrated with Spring framework, but can be used without it:
+```java
+LoggerInjector.inject(bean);
+```
+
 
 ## Supported logging frameworks
 
@@ -9,6 +27,15 @@
 * [Simple Logging Facade for Java (SLF4J)](http://www.slf4j.org)
 * [Logback](http://logback.qos.ch)
 * [Apache Log4j](http://logging.apache.org/log4j)
+
+It is also possible to add other logging frameworks:
+
+* Create new class in your project which should implement interface `com.github.vbauer.herald.logger.LogFactory`.
+  Add all necessary logic about logger creation in this class.
+* Create `ServiceLoader`'s file in your project: "META-INF/services/com.github.vbauer.herald.logger.LogFactory".
+* Add full class name of your new extension in this file.
+
+That's all!
 
 
 ## Setup
@@ -38,6 +65,40 @@ repositories {
 dependencies {
     compile 'com.github.vbauer:herald:1.0.0'
 }
+```
+
+
+## Spring configuration
+
+### Java based configuration
+
+You need to configure only one `BeanPostProcessor`:
+
+```java
+@Configuration
+public class AppContext {
+
+    @Bean
+    public LogBeanPostProcessor logBeanPostProcessor() {
+        return new LogBeanPostProcessor();
+    }
+
+}
+```
+
+### XML Schema-based configuration
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="com.github.vbauer.herald.processor.LogBeanPostProcessor" />
+
+</beans>
 ```
 
 
