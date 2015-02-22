@@ -1,6 +1,7 @@
 package com.github.vbauer.herald.util;
 
 import com.github.vbauer.herald.annotation.Log;
+import com.github.vbauer.herald.exception.MissedLogFactoryException;
 import com.github.vbauer.herald.logger.LogFactory;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.util.StringUtils;
@@ -19,7 +20,7 @@ public final class LoggerInjector {
     }
 
 
-    public static void inject(final Object bean) {
+    public static <T> T inject(final T bean) {
         final Class<?> beanClass = bean.getClass();
         final Collection<LogFactory> logFactories = ServiceLoaderUtils.load(LogFactory.class);
 
@@ -38,6 +39,8 @@ public final class LoggerInjector {
                     }
                 }
         );
+
+        return bean;
     }
 
 
@@ -59,9 +62,7 @@ public final class LoggerInjector {
 
             final LogFactory logFactory = LogFactoryUtils.findCompatible(logFactories, loggerClass);
             if (logFactory == null) {
-                throw new UnsupportedOperationException(
-                    String.format("Can not find log factory for logger %s", loggerClass)
-                );
+                throw new MissedLogFactoryException(loggerClass, annotation);
             }
 
             final Object logger = createLogger(logFactory, loggerName, beanClass);

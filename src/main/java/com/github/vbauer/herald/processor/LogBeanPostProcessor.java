@@ -11,8 +11,7 @@ public class LogBeanPostProcessor implements BeanPostProcessor {
 
     @Override
     public Object postProcessBeforeInitialization(final Object bean, final String beanName) {
-        LoggerInjector.inject(bean);
-        return bean;
+        return LoggerInjector.inject(bean);
     }
 
     @Override

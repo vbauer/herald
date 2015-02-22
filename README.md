@@ -1,5 +1,14 @@
 
-# Herald
+# Herald [![Build Status](https://travis-ci.org/vbauer/herald.svg)](https://travis-ci.org/vbauer/herald) [![Coverage Status](https://coveralls.io/repos/vbauer/herald/badge.svg?branch=master)](https://coveralls.io/r/vbauer/herald?branch=master) [![Maven](https://img.shields.io/github/tag/vbauer/herald.svg?label=maven)](https://jitpack.io/#vbauer/herald)
+
+
+## Supported logging frameworks
+
+* [JavaTM 2 platform's core logging framework](http://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html)
+* [Apache Commons Logging](http://commons.apache.org/proper/commons-logging)
+* [Simple Logging Facade for Java (SLF4J)](http://www.slf4j.org)
+* [Logback](http://logback.qos.ch)
+* [Apache Log4j](http://logging.apache.org/log4j)
 
 
 ## Setup
