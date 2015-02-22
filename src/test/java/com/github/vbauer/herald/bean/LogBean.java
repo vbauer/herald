@@ -23,6 +23,9 @@ public class LogBean {
     private org.slf4j.Logger slf4jLogger;
 
     @Log
+    private org.slf4j.ext.XLogger slf4jExtLogger;
+
+    @Log
     private org.apache.log4j.Logger log4jLogger;
 
 
@@ -40,6 +43,10 @@ public class LogBean {
 
     public org.slf4j.Logger getSlf4jLogger() {
         return slf4jLogger;
+    }
+
+    public org.slf4j.ext.XLogger getSlf4jExtLogger() {
+        return slf4jExtLogger;
     }
 
     public org.apache.log4j.Logger getLog4jLogger() {

@@ -28,6 +28,9 @@ public class NamedLogBean {
     @Log(LOGGER_NAME)
     private org.apache.log4j.Logger log4jLogger;
 
+    @Log
+    private org.slf4j.ext.XLogger slf4jExtLogger;
+
 
     public java.util.logging.Logger getJavaUtilLogger() {
         return javaUtilLogger;
@@ -43,6 +46,10 @@ public class NamedLogBean {
 
     public org.slf4j.Logger getSlf4jLogger() {
         return slf4jLogger;
+    }
+
+    public org.slf4j.ext.XLogger getSlf4jExtLogger() {
+        return slf4jExtLogger;
     }
 
     public org.apache.log4j.Logger getLog4jLogger() {

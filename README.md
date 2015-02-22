@@ -25,6 +25,7 @@ LoggerInjector.inject(bean);
 * [JavaTM 2 platform's core logging framework](http://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html)
 * [Apache Commons Logging](http://commons.apache.org/proper/commons-logging)
 * [Simple Logging Facade for Java (SLF4J)](http://www.slf4j.org)
+* [SLF4J Extended logger](http://www.slf4j.org/extensions.html#extended_logger)
 * [Logback](http://logback.qos.ch)
 * [Apache Log4j](http://logging.apache.org/log4j)
 
