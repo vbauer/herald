@@ -12,14 +12,15 @@ public class JavaUtilLogFactory extends SimpleLogFactory {
     public static final String LOGGER_CLASS_NAME = "java.util.logging.Logger";
 
 
-    @Override
-    public String getLoggerClassName() {
-        return LOGGER_CLASS_NAME;
-    }
 
     @Override
     public Object createLogger(final String name) {
         return Logger.getLogger(name);
     }
 
+    @Override
+    protected String getLoggerClassName() {
+        return LOGGER_CLASS_NAME;
+    }
+    
 }

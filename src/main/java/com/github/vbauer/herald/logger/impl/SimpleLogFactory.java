@@ -21,6 +21,6 @@ public abstract class SimpleLogFactory implements LogFactory {
     }
 
 
-    public abstract String getLoggerClassName();
+    protected abstract String getLoggerClassName();
 
 }

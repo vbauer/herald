@@ -15,11 +15,6 @@ public class Log4j2LogFactory extends SimpleLogFactory {
 
 
     @Override
-    public String getLoggerClassName() {
-        return LOGGER_CLASS_NAME;
-    }
-
-    @Override
     public Object createLogger(final Class<?> clazz) {
         return ReflectionUtils.invokeStatic(FACTORY_CLASS_NAME, FACTORY_METHOD_NAME, clazz);
     }
@@ -29,4 +24,9 @@ public class Log4j2LogFactory extends SimpleLogFactory {
         return ReflectionUtils.invokeStatic(FACTORY_CLASS_NAME, FACTORY_METHOD_NAME, name);
     }
 
+    @Override
+    protected String getLoggerClassName() {
+        return LOGGER_CLASS_NAME;
+    }
+    
 }
