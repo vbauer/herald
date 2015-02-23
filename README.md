@@ -31,7 +31,7 @@ LoggerInjector.inject(bean);
 
 It is also possible to add other logging frameworks:
 
-* Create new class in your project which should implement interface `com.github.vbauer.herald.logger.LogFactory`.
+* Create new class in your project, it should implement interface `com.github.vbauer.herald.logger.LogFactory`.
   Add all necessary logic about logger creation in this class.
 * Create `ServiceLoader`'s file in your project: "META-INF/services/com.github.vbauer.herald.logger.LogFactory".
 * Add full class name of your new extension in this file.
