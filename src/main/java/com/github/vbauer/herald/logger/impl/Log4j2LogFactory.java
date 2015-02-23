@@ -3,15 +3,15 @@ package com.github.vbauer.herald.logger.impl;
 import com.github.vbauer.herald.util.ReflectionUtils;
 
 /**
- * @author Vladislav Bauer
+ * @author Vladislav Bauer 
  */
 
 @SuppressWarnings("unused")
-public class Slf4jExtLogFactory extends SimpleLogFactory {
+public class Log4j2LogFactory extends SimpleLogFactory {
 
-    public static final String LOGGER_CLASS_NAME = "org.slf4j.ext.XLogger";
-    public static final String FACTORY_CLASS_NAME = "org.slf4j.ext.XLoggerFactory";
-    public static final String FACTORY_METHOD_NAME = "getXLogger";
+    public static final String LOGGER_CLASS_NAME = "org.apache.logging.log4j.Logger";
+    public static final String FACTORY_CLASS_NAME = "org.apache.logging.log4j.LogManager";
+    public static final String FACTORY_METHOD_NAME = "getLogger";
 
 
     @Override

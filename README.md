@@ -27,7 +27,8 @@ LoggerInjector.inject(bean);
 * [Simple Logging Facade for Java (SLF4J)](http://www.slf4j.org)
 * [SLF4J Extended logger](http://www.slf4j.org/extensions.html#extended_logger)
 * [Logback](http://logback.qos.ch)
-* [Apache Log4j](http://logging.apache.org/log4j)
+* [Apache Log4j](https://logging.apache.org/log4j/1.2/)
+* [Apache Log4j 2](http://logging.apache.org/log4j/2.x/)
 
 It is also possible to add other logging frameworks:
 

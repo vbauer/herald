@@ -28,7 +28,10 @@ public class LogBean {
     @Log
     private org.apache.log4j.Logger log4jLogger;
 
+    @Log
+    private org.apache.logging.log4j.Logger log4j2Logger;
 
+    
     public java.util.logging.Logger getJavaUtilLogger() {
         return javaUtilLogger;
     }
@@ -53,4 +56,8 @@ public class LogBean {
         return log4jLogger;
     }
 
+    public org.apache.logging.log4j.Logger getLog4j2Logger() {
+        return log4j2Logger;
+    }
+    
 }

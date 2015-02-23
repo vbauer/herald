@@ -28,6 +28,7 @@ public class LogBeanPostProcessorTest extends BasicSpringTest {
         Assert.notNull(logBean.getSlf4jLogger());
         Assert.notNull(logBean.getSlf4jExtLogger());
         Assert.notNull(logBean.getLog4jLogger());
+        Assert.notNull(logBean.getLog4j2Logger());
     }
 
     @Test
@@ -38,6 +39,7 @@ public class LogBeanPostProcessorTest extends BasicSpringTest {
         Assert.notNull(namedLogBean.getSlf4jLogger());
         Assert.notNull(namedLogBean.getSlf4jExtLogger());
         Assert.notNull(namedLogBean.getLog4jLogger());
+        Assert.notNull(namedLogBean.getLog4j2Logger());
     }
 
 }
