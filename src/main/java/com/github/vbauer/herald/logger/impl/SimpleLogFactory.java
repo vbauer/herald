@@ -9,18 +9,34 @@ import com.github.vbauer.herald.util.ReflectionUtils;
 
 public abstract class SimpleLogFactory implements LogFactory {
 
+    private final String loggerClassName;
+    private final String loggerFactoryClassName;
+    private final String loggerFactoryMethod;
+    
+            
+    protected SimpleLogFactory(
+        final String loggerClassName,
+        final String loggerFactoryClassName, final String loggerFactoryMethod
+    ) {
+        this.loggerClassName = loggerClassName;
+        this.loggerFactoryClassName = loggerFactoryClassName;
+        this.loggerFactoryMethod = loggerFactoryMethod;
+    }
+    
+
     @Override
     public boolean isCompatible(final Class<?> loggerClass) {
-        final String loggerClassName = getLoggerClassName();
         return ReflectionUtils.isAssignableFrom(loggerClassName, loggerClass);
     }
 
     @Override
     public Object createLogger(final Class<?> clazz) {
-        return createLogger(clazz.getSimpleName());
+        return ReflectionUtils.invokeStatic(loggerFactoryClassName, loggerFactoryMethod, clazz);
     }
 
-
-    protected abstract String getLoggerClassName();
+    @Override
+    public Object createLogger(final String name) {
+        return ReflectionUtils.invokeStatic(loggerFactoryClassName, loggerFactoryMethod, name);
+    }
 
 }

@@ -1,7 +1,5 @@
 package com.github.vbauer.herald.logger.impl;
 
-import java.util.logging.Logger;
-
 /**
  * @author Vladislav Bauer
  */
@@ -10,17 +8,18 @@ import java.util.logging.Logger;
 public class JavaUtilLogFactory extends SimpleLogFactory {
 
     public static final String LOGGER_CLASS_NAME = "java.util.logging.Logger";
+    public static final String FACTORY_CLASS_NAME = LOGGER_CLASS_NAME;
+    public static final String FACTORY_METHOD_NAME = "getLogger";
 
-
-
-    @Override
-    public Object createLogger(final String name) {
-        return Logger.getLogger(name);
+    
+    public JavaUtilLogFactory() {
+        super(LOGGER_CLASS_NAME, FACTORY_CLASS_NAME, FACTORY_METHOD_NAME);
     }
 
+    
     @Override
-    protected String getLoggerClassName() {
-        return LOGGER_CLASS_NAME;
+    public Object createLogger(Class<?> clazz) {
+        return createLogger(clazz.getSimpleName());
     }
     
 }
