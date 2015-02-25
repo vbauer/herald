@@ -1,9 +1,9 @@
 
 # Herald [![Build Status](https://travis-ci.org/vbauer/herald.svg)](https://travis-ci.org/vbauer/herald) [![Coverage Status](https://coveralls.io/repos/vbauer/herald/badge.svg?branch=master)](https://coveralls.io/r/vbauer/herald?branch=master) [![Maven](https://img.shields.io/github/tag/vbauer/herald.svg?label=maven)](https://jitpack.io/#vbauer/herald)
 
-> "Why, sometimes I've believed as many as six impossible things before breakfast." - Lewis Carroll, Alice in Wonderland.
-
 <img align="right" style="margin-left: 15px" width="280" height="400" src="misc/white-rabbit.png">
+
+> "Why, sometimes I've believed as many as six impossible things before breakfast." - Lewis Carroll, Alice in Wonderland.
 
 You can annotate any class field with a `@Log` annotation to let **Herald** inject appropriate logger in this field.
 
