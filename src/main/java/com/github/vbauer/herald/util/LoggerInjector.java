@@ -4,6 +4,8 @@ import com.github.vbauer.herald.annotation.Log;
 import com.github.vbauer.herald.exception.MissedLogFactoryException;
 import com.github.vbauer.herald.logger.LogFactory;
 import org.springframework.util.ReflectionUtils;
+import org.springframework.util.ReflectionUtils.FieldCallback;
+import org.springframework.util.ReflectionUtils.FieldFilter;
 import org.springframework.util.StringUtils;
 
 import java.lang.reflect.Field;
@@ -25,19 +27,19 @@ public final class LoggerInjector {
         final Collection<LogFactory> logFactories = ServiceLoaderUtils.load(LogFactory.class);
 
         ReflectionUtils.doWithFields(
-                beanClass,
-                new ReflectionUtils.FieldCallback() {
-                    @Override
-                    public void doWith(final Field field) throws IllegalAccessException {
-                        inject(bean, field, logFactories);
-                    }
-                },
-                new ReflectionUtils.FieldFilter() {
-                    @Override
-                    public boolean matches(final Field field) {
-                        return field.getAnnotation(Log.class) != null;
-                    }
+            beanClass,
+            new FieldCallback() {
+                @Override
+                public void doWith(final Field field) throws IllegalAccessException {
+                    inject(bean, field, logFactories);
                 }
+            },
+            new FieldFilter() {
+                @Override
+                public boolean matches(final Field field) {
+                    return needToInject(bean, field, logFactories);
+                }
+            }
         );
 
         return bean;
@@ -48,6 +50,23 @@ public final class LoggerInjector {
      * Internal API.
      */
 
+    private static boolean needToInject(
+        final Object bean, final Field field, final Collection<LogFactory> logFactories
+    ) {
+        final boolean isSyntheticField = field.isSynthetic();
+        if (!isSyntheticField) {
+            final Class<?> beanClass = bean.getClass();
+            final boolean hasClassAnnotation = beanClass.getAnnotation(Log.class) != null;
+
+            if (hasClassAnnotation) {
+                final Class<?> fieldType = field.getType();
+                return LogFactoryUtils.hasCompatible(logFactories, fieldType);
+            }
+            return field.getAnnotation(Log.class) != null;
+        }
+        return false;
+    }
+
     private static void inject(
         final Object bean, final Field field, final Collection<LogFactory> logFactories
     ) throws IllegalAccessException {
@@ -55,10 +74,10 @@ public final class LoggerInjector {
         ReflectionUtils.makeAccessible(field);
 
         try {
-            final Log annotation = field.getAnnotation(Log.class);
+            final Class<?> beanClass = bean.getClass();
+            final Log annotation = getAnnotation(beanClass, field);
             final String loggerName = annotation.value();
             final Class<?> loggerClass = field.getType();
-            final Class<?> beanClass = bean.getClass();
 
             final LogFactory logFactory = LogFactoryUtils.findCompatible(logFactories, loggerClass);
             if (logFactory == null) {
@@ -70,6 +89,11 @@ public final class LoggerInjector {
         } finally {
             field.setAccessible(isAccessible);
         }
+    }
+
+    private static Log getAnnotation(final Class<?> beanClass, final Field field) {
+        final Log fieldAnnotation = field.getAnnotation(Log.class);
+        return fieldAnnotation == null ? beanClass.getAnnotation(Log.class) : fieldAnnotation;
     }
 
     private static Object createLogger(final LogFactory logFactory, final String loggerName, final Class<?> beanClass) {

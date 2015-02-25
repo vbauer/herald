@@ -103,6 +103,13 @@ public class AppContext {
 </beans>
 ```
 
+## @Log annotation
+
+You can use `@Log` annotation in 2 ways:
+
+* Put it on class - All suitable logger fields will be injected. Validation check will be switched off, so all undefined logger fields will be skipped.
+* Put it on field - It allows you to inject only suitable logger and throws `MissedLogFactoryException` otherwise.
+
 
 ## Might also like
 

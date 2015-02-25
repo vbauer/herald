@@ -28,4 +28,10 @@ public class LoggerInjectorTest extends BasicTest {
         }
     }
 
+    @Test
+    public void testSynthetic() {
+        final IncorrectLogBean bean = new IncorrectLogBean();
+        Assert.assertNotNull(LoggerInjector.inject(bean.new SyntheticTestClass()));
+    }
+
 }

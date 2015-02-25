@@ -15,6 +15,11 @@ public final class LogFactoryUtils {
         throw new UnsupportedOperationException();
     }
 
+
+    public static boolean hasCompatible(final Collection<LogFactory> factories, final Class<?> loggerClass) {
+        return findCompatible(factories, loggerClass) != null;
+    }
+
     public static LogFactory findCompatible(final Collection<LogFactory> factories, final Class<?> loggerClass) {
         if (!CollectionUtils.isEmpty(factories)) {
             for (final LogFactory factory : factories) {

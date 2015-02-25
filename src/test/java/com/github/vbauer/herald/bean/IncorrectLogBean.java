@@ -16,4 +16,14 @@ public class IncorrectLogBean {
         return badLogger;
     }
 
+
+    /**
+     * Fake class to check synthetic fields.
+     *
+     * @author Vladislav Bauer
+     */
+
+    public class SyntheticTestClass {
+    }
+
 }
