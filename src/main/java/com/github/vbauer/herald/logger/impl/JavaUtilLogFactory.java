@@ -18,7 +18,7 @@ public class JavaUtilLogFactory extends SimpleLogFactory {
 
     
     @Override
-    public Object createLogger(Class<?> clazz) {
+    public Object createLogger(final Class<?> clazz) {
         return createLogger(clazz.getSimpleName());
     }
     
