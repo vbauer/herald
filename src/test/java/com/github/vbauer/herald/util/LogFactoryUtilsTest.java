@@ -25,4 +25,11 @@ public class LogFactoryUtilsTest extends BasicTest {
         Assert.assertNull(LogFactoryUtils.findCompatible(Collections.<LogFactory>emptyList(), Object.class));
     }
 
+    @Test
+    public void testHasCompatible() {
+        Assert.assertFalse(LogFactoryUtils.hasCompatible(null, null));
+        Assert.assertFalse(LogFactoryUtils.hasCompatible(Collections.<LogFactory>emptyList(), null));
+        Assert.assertFalse(LogFactoryUtils.hasCompatible(Collections.<LogFactory>emptyList(), Object.class));
+    }
+
 }
