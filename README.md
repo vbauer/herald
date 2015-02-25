@@ -5,11 +5,13 @@
 
 > "Why, sometimes I've believed as many as six impossible things before breakfast." - Lewis Carroll, Alice in Wonderland.
 
-**Herald** provides a very simple [BeanPostProcessor](http://docs.spring.io/spring-framework/docs/2.5.6/api/org/springframework/beans/factory/config/BeanPostProcessor.html) which does all the magic for you. You can annotate any bean field with a `@Log` annotation to let Herald inject suitable logger in this field. It does not matter whether it is a static field or not.
+**Herald** provides a very simple [BeanPostProcessor](http://docs.spring.io/spring-framework/docs/2.5.6/api/org/springframework/beans/factory/config/BeanPostProcessor.html) which does all the magic for you.
+You can annotate any field of Spring bean with a `@Log` annotation to let Herald inject suitable logger in this field. It does not matter whether it is a static field or not.
 
 Just forget about this code:
 ```java
-private static final Logger LOGGER = LoggerFactory.getLogger(Foo.class);
+private static final Logger LOGGER =
+    LoggerFactory.getLogger(Foo.class);
 ```
 
 Write less code, use short form:
