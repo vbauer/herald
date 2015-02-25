@@ -23,6 +23,7 @@ public class NamedLogBeanTest extends BasicSpringTest {
 
 
     public static void check(final NamedLogBean bean) {
+        Assert.notNull(NamedLogBean.getStaticJavaUtilLogger());
         Assert.notNull(bean.getJavaUtilLogger());
         Assert.notNull(bean.getCommonsLoggingLogger());
         Assert.notNull(bean.getLogbackLogger());

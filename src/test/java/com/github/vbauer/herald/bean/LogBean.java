@@ -11,6 +11,9 @@ import org.springframework.stereotype.Component;
 public class LogBean {
 
     @Log
+    private static java.util.logging.Logger staticJavaUtilLogger;
+
+    @Log
     private java.util.logging.Logger javaUtilLogger;
 
     @Log
@@ -31,7 +34,11 @@ public class LogBean {
     @Log
     private org.apache.logging.log4j.Logger log4j2Logger;
 
-    
+
+    public static java.util.logging.Logger getStaticJavaUtilLogger() {
+        return staticJavaUtilLogger;
+    }
+
     public java.util.logging.Logger getJavaUtilLogger() {
         return javaUtilLogger;
     }

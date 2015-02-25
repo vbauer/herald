@@ -23,6 +23,7 @@ public class LogBeanTest extends BasicSpringTest {
 
 
     public static void check(final LogBean bean) {
+        Assert.notNull(LogBean.getStaticJavaUtilLogger());
         Assert.notNull(bean.getJavaUtilLogger());
         Assert.notNull(bean.getCommonsLoggingLogger());
         Assert.notNull(bean.getLogbackLogger());

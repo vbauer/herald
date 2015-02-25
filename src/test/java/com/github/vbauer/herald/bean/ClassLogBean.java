@@ -14,6 +14,8 @@ public class ClassLogBean {
     public static final int DEF_NOT_LOGGER_VALUE = 5;
 
 
+    private static java.util.logging.Logger staticJavaUtilLogger;
+
     private java.util.logging.Logger javaUtilLogger;
 
     private org.apache.commons.logging.Log commonsLoggingLogger;
@@ -31,6 +33,10 @@ public class ClassLogBean {
     @SuppressWarnings("FieldCanBeLocal")
     private int notLogger = DEF_NOT_LOGGER_VALUE;
 
+
+    public static java.util.logging.Logger getStaticJavaUtilLogger() {
+        return staticJavaUtilLogger;
+    }
 
     public java.util.logging.Logger getJavaUtilLogger() {
         return javaUtilLogger;
