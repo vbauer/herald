@@ -23,20 +23,15 @@ public class LogBeanPostProcessorTest extends BasicSpringTest {
 
     @Test
     public void testLogBeanPostProcessor() {
-        final ClassLogBean classLogBean = new ClassLogBean();
-        Assert.notNull(logBeanPostProcessor.postProcessBeforeInitialization(classLogBean, null));
-        Assert.notNull(logBeanPostProcessor.postProcessAfterInitialization(classLogBean, null));
-        ClassLogBeanTest.check(classLogBean);
+        ClassLogBeanTest.check(checkPostProcessor(new ClassLogBean()));
+        LogBeanTest.check(checkPostProcessor(new LogBean()));
+        NamedLogBeanTest.check(checkPostProcessor(new NamedLogBean()));
+    }
 
-        final LogBean logBean = new LogBean();
-        Assert.notNull(logBeanPostProcessor.postProcessBeforeInitialization(logBean, null));
-        Assert.notNull(logBeanPostProcessor.postProcessAfterInitialization(logBean, null));
-        LogBeanTest.check(logBean);
-
-        final NamedLogBean namedLogBean = new NamedLogBean();
-        Assert.notNull(logBeanPostProcessor.postProcessBeforeInitialization(namedLogBean, null));
-        Assert.notNull(logBeanPostProcessor.postProcessAfterInitialization(namedLogBean, null));
-        NamedLogBeanTest.check(namedLogBean);
+    private <T> T checkPostProcessor(final T bean) {
+        Assert.isTrue(bean == logBeanPostProcessor.postProcessBeforeInitialization(bean, null));
+        Assert.isTrue(bean == logBeanPostProcessor.postProcessAfterInitialization(bean, null));
+        return bean;
     }
 
 }
