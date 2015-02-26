@@ -26,4 +26,13 @@ public class IncorrectLogBean {
     public class SyntheticTestClass {
     }
 
+    /**
+     * Fake class to check logger injector in case of zero fields.
+     *
+     * @author Vladislav Bauer
+     */
+    @Log
+    public static class EmptyTestClass {
+    }
+
 }

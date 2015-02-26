@@ -5,7 +5,9 @@ import com.github.vbauer.herald.exception.MissedLogFactoryException;
 import com.github.vbauer.herald.logger.LogFactory;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * @author Vladislav Bauer
@@ -18,12 +20,16 @@ public final class LoggerInjector {
     }
 
 
-    public static void inject(final Object... beans) {
-        if (beans != null && beans.length > 0) {
+    public static Collection<Object> inject(final Object... beans) {
+        final List<Object> result = new ArrayList<Object>();
+
+        if (!CollectionUtils.isEmpty(beans)) {
             for (final Object bean : beans) {
-                inject(bean);
+                result.add(inject(bean));
             }
         }
+
+        return result;
     }
 
     public static <T> T inject(final T bean) {
@@ -31,11 +37,9 @@ public final class LoggerInjector {
         final Collection<LogFactory> logFactories = ServiceLoaderUtils.load(LogFactory.class);
 
         final Field[] declaredFields = beanClass.getDeclaredFields();
-        if (!CollectionUtils.isEmpty(declaredFields)) {
-            for (final Field field : declaredFields) {
-                if (needToInjectLogger(bean, field, logFactories)) {
-                    injectLogger(bean, field, logFactories);
-                }
+        for (final Field field : declaredFields) {
+            if (needToInjectLogger(bean, field, logFactories)) {
+                injectLogger(bean, field, logFactories);
             }
         }
 
@@ -96,9 +100,8 @@ public final class LoggerInjector {
     }
 
     private static Object createLogger(final LogFactory logFactory, final String loggerName, final Class<?> beanClass) {
-        final String name = loggerName == null ? "" : loggerName.trim();
-        if (!name.isEmpty()) {
-            return logFactory.createLogger(name);
+        if (!loggerName.isEmpty()) {
+            return logFactory.createLogger(loggerName);
         } else {
             return logFactory.createLogger(beanClass);
         }

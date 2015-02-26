@@ -41,16 +41,26 @@ public class LoggerInjectorTest extends BasicTest {
     }
 
     @Test
+    public void testNoOneLogger() {
+        Assert.assertNotNull(LoggerInjector.inject(new IncorrectLogBean.EmptyTestClass()));
+    }
+
+    @Test
     public void testFewBeans() {
         final ClassLogBean classLogBean = new ClassLogBean();
         final LogBean logBean = new LogBean();
         final NamedLogBean namedLogBean = new NamedLogBean();
 
-        LoggerInjector.inject(classLogBean, logBean, namedLogBean);
+        Assert.assertEquals(3, LoggerInjector.inject(classLogBean, logBean, namedLogBean).size());
 
         ClassLogBeanTest.check(classLogBean);
         LogBeanTest.check(logBean);
         NamedLogBeanTest.check(namedLogBean);
+    }
+
+    @Test
+    public void testZeroBeans() {
+        Assert.assertTrue(LoggerInjector.inject().isEmpty());
     }
 
 }
