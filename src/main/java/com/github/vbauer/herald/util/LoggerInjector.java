@@ -22,6 +22,14 @@ public final class LoggerInjector {
     }
 
 
+    public static void inject(final Object... beans) {
+        if (beans != null && beans.length > 0) {
+            for (final Object bean : beans) {
+                inject(bean);
+            }
+        }
+    }
+
     public static <T> T inject(final T bean) {
         final Class<?> beanClass = bean.getClass();
         final Collection<LogFactory> logFactories = ServiceLoaderUtils.load(LogFactory.class);

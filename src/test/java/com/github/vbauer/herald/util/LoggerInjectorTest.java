@@ -1,8 +1,14 @@
 package com.github.vbauer.herald.util;
 
+import com.github.vbauer.herald.bean.ClassLogBean;
 import com.github.vbauer.herald.bean.IncorrectLogBean;
+import com.github.vbauer.herald.bean.LogBean;
+import com.github.vbauer.herald.bean.NamedLogBean;
 import com.github.vbauer.herald.core.BasicTest;
 import com.github.vbauer.herald.exception.MissedLogFactoryException;
+import com.github.vbauer.herald.logger.ClassLogBeanTest;
+import com.github.vbauer.herald.logger.LogBeanTest;
+import com.github.vbauer.herald.logger.NamedLogBeanTest;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -32,6 +38,19 @@ public class LoggerInjectorTest extends BasicTest {
     public void testSynthetic() {
         final IncorrectLogBean bean = new IncorrectLogBean();
         Assert.assertNotNull(LoggerInjector.inject(bean.new SyntheticTestClass()));
+    }
+
+    @Test
+    public void testFewBeans() {
+        final ClassLogBean classLogBean = new ClassLogBean();
+        final LogBean logBean = new LogBean();
+        final NamedLogBean namedLogBean = new NamedLogBean();
+
+        LoggerInjector.inject(classLogBean, logBean, namedLogBean);
+
+        ClassLogBeanTest.check(classLogBean);
+        LogBeanTest.check(logBean);
+        NamedLogBeanTest.check(namedLogBean);
     }
 
 }

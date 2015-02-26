@@ -23,6 +23,9 @@ private Logger logger;
 The project is integrated with Spring framework, but can be used without it:
 ```java
 LoggerInjector.inject(bean);
+
+// or even using varargs:
+LoggerInjector.inject(bean1, bean2, bean3);
 ```
 
 
