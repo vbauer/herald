@@ -1,7 +1,6 @@
 package com.github.vbauer.herald.util;
 
 import com.github.vbauer.herald.logger.LogFactory;
-import org.springframework.util.CollectionUtils;
 
 import java.util.Collection;
 

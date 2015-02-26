@@ -31,4 +31,14 @@ public class ReflectionUtilsTest extends BasicTest {
         ReflectionUtils.invokeStatic(null, null, null);
     }
 
+    @Test(expected = RuntimeException.class)
+    public void testHandleReflectionException() {
+        ReflectionUtils.handleReflectionException(new Exception());
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void testHandleReflectionRuntimeException() {
+        ReflectionUtils.handleReflectionException(new RuntimeException());
+    }
+
 }

@@ -13,10 +13,10 @@ public final class ReflectionUtils {
     }
 
 
-    public static boolean isAssignableFrom(final String clazz, final Class<?> from) {
+    public static boolean isAssignableFrom(final String className, final Class<?> from) {
         try {
-            final Class<?> compatibleLoggerClass = Class.forName(clazz);
-            return compatibleLoggerClass.isAssignableFrom(from);
+            final Class<?> clazz = Class.forName(className);
+            return clazz.isAssignableFrom(from);
         } catch (final Exception ex) {
             return false;
         }
@@ -26,13 +26,20 @@ public final class ReflectionUtils {
     public  static <I, O> O invokeStatic(final String className, final String methodName, final I argument) {
         try {
             final Class<?> clazz = Class.forName(className);
-            final Method method = clazz.getDeclaredMethod(methodName, argument.getClass());
+            final Class<?> argumentClass = argument.getClass();
 
-            return (O) org.springframework.util.ReflectionUtils.invokeMethod(method, null, argument);
+            final Method method = clazz.getDeclaredMethod(methodName, argumentClass);
+            return (O) method.invoke(null, argument);
         } catch (final Exception ex) {
-            org.springframework.util.ReflectionUtils.handleReflectionException(ex);
-            return null;
+            return handleReflectionException(ex);
         }
+    }
+
+    public static <T> T handleReflectionException(final Throwable ex) {
+        if (ex instanceof RuntimeException) {
+            throw (RuntimeException) ex;
+        }
+        throw new RuntimeException(ex);
     }
 
 }

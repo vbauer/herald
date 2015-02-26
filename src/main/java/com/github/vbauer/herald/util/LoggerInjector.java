@@ -3,10 +3,6 @@ package com.github.vbauer.herald.util;
 import com.github.vbauer.herald.annotation.Log;
 import com.github.vbauer.herald.exception.MissedLogFactoryException;
 import com.github.vbauer.herald.logger.LogFactory;
-import org.springframework.util.ReflectionUtils;
-import org.springframework.util.ReflectionUtils.FieldCallback;
-import org.springframework.util.ReflectionUtils.FieldFilter;
-import org.springframework.util.StringUtils;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
@@ -34,21 +30,14 @@ public final class LoggerInjector {
         final Class<?> beanClass = bean.getClass();
         final Collection<LogFactory> logFactories = ServiceLoaderUtils.load(LogFactory.class);
 
-        ReflectionUtils.doWithFields(
-            beanClass,
-            new FieldCallback() {
-                @Override
-                public void doWith(final Field field) throws IllegalAccessException {
+        final Field[] declaredFields = beanClass.getDeclaredFields();
+        if (!CollectionUtils.isEmpty(declaredFields)) {
+            for (final Field field : declaredFields) {
+                if (needToInjectLogger(bean, field, logFactories)) {
                     injectLogger(bean, field, logFactories);
                 }
-            },
-            new FieldFilter() {
-                @Override
-                public boolean matches(final Field field) {
-                    return needToInjectLogger(bean, field, logFactories);
-                }
             }
-        );
+        }
 
         return bean;
     }
@@ -77,9 +66,9 @@ public final class LoggerInjector {
 
     private static void injectLogger(
         final Object bean, final Field field, final Collection<LogFactory> logFactories
-    ) throws IllegalAccessException {
+    ) {
         final boolean isAccessible = field.isAccessible();
-        ReflectionUtils.makeAccessible(field);
+        field.setAccessible(true);
 
         try {
             final Class<?> beanClass = bean.getClass();
@@ -94,6 +83,8 @@ public final class LoggerInjector {
 
             final Object logger = createLogger(logFactory, loggerName, beanClass);
             field.set(bean, logger);
+        } catch (final IllegalAccessException ex) {
+            ReflectionUtils.handleReflectionException(ex);
         } finally {
             field.setAccessible(isAccessible);
         }
@@ -105,8 +96,8 @@ public final class LoggerInjector {
     }
 
     private static Object createLogger(final LogFactory logFactory, final String loggerName, final Class<?> beanClass) {
-        final String name = StringUtils.trimWhitespace(loggerName);
-        if (!StringUtils.isEmpty(name)) {
+        final String name = loggerName == null ? "" : loggerName.trim();
+        if (!name.isEmpty()) {
             return logFactory.createLogger(name);
         } else {
             return logFactory.createLogger(beanClass);
