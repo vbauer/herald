@@ -39,13 +39,13 @@ public final class LoggerInjector {
             new FieldCallback() {
                 @Override
                 public void doWith(final Field field) throws IllegalAccessException {
-                    inject(bean, field, logFactories);
+                    injectLogger(bean, field, logFactories);
                 }
             },
             new FieldFilter() {
                 @Override
                 public boolean matches(final Field field) {
-                    return needToInject(bean, field, logFactories);
+                    return needToInjectLogger(bean, field, logFactories);
                 }
             }
         );
@@ -58,7 +58,7 @@ public final class LoggerInjector {
      * Internal API.
      */
 
-    private static boolean needToInject(
+    private static boolean needToInjectLogger(
         final Object bean, final Field field, final Collection<LogFactory> logFactories
     ) {
         final boolean isSyntheticField = field.isSynthetic();
@@ -75,7 +75,7 @@ public final class LoggerInjector {
         return false;
     }
 
-    private static void inject(
+    private static void injectLogger(
         final Object bean, final Field field, final Collection<LogFactory> logFactories
     ) throws IllegalAccessException {
         final boolean isAccessible = field.isAccessible();
