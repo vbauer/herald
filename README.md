@@ -132,6 +132,7 @@ If you do not specify it, then class name will be used as logger name.
 ## Might also like
 
 * [houdini](https://github.com/vbauer/houdini) - Type conversion system for Spring framework.
+* [caesar](https://github.com/vbauer/caesar) - Library that allows to create async beans from sync beans.
 * [commons-vfs2-cifs](https://github.com/vbauer/commons-vfs2-cifs) - SMB/CIFS provider for Commons VFS.
 * [avconv4java](https://github.com/vbauer/avconv4java) - Java interface to avconv tool.
 
