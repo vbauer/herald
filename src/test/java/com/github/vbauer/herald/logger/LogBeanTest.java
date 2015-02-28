@@ -31,6 +31,7 @@ public class LogBeanTest extends BasicSpringTest {
         Assert.notNull(bean.getSlf4jExtLogger());
         Assert.notNull(bean.getLog4jLogger());
         Assert.notNull(bean.getLog4j2Logger());
+        Assert.notNull(bean.getJBossLogger());
     }
 
 }

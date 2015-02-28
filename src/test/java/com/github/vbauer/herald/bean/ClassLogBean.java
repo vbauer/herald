@@ -30,6 +30,8 @@ public class ClassLogBean {
 
     private org.apache.logging.log4j.Logger log4j2Logger;
 
+    private org.jboss.logging.Logger jbossLogger;;
+
     @SuppressWarnings("FieldCanBeLocal")
     private int notLogger = DEF_NOT_LOGGER_VALUE;
 
@@ -64,6 +66,10 @@ public class ClassLogBean {
 
     public org.apache.logging.log4j.Logger getLog4j2Logger() {
         return log4j2Logger;
+    }
+
+    public org.jboss.logging.Logger getJBossLogger() {
+        return jbossLogger;
     }
 
     public int getNotLogger() {

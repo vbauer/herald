@@ -49,6 +49,7 @@
         <log4j.version>1.2.17</log4j.version>
         <log4j2.version>2.1</log4j2.version>
         <slf4j.version>1.7.10</slf4j.version>
+        <jboss.logging.version>3.2.1.Final</jboss.logging.version>
 
         <maven.compiler.plugin.version>3.2</maven.compiler.plugin.version>
         <maven.source.plugin.version>2.4</maven.source.plugin.version>
@@ -145,6 +146,13 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-ext</artifactId>
             <version>${slf4j.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging</artifactId>
+            <version>${jboss.logging.version}</version>
             <scope>test</scope>
         </dependency>
 

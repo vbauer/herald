@@ -34,6 +34,9 @@ public class LogBean {
     @Log
     private org.apache.logging.log4j.Logger log4j2Logger;
 
+    @Log
+    private org.jboss.logging.Logger jbossLogger;;
+
 
     public static java.util.logging.Logger getStaticJavaUtilLogger() {
         return staticJavaUtilLogger;
@@ -66,5 +69,9 @@ public class LogBean {
     public org.apache.logging.log4j.Logger getLog4j2Logger() {
         return log4j2Logger;
     }
-    
+
+    public org.jboss.logging.Logger getJBossLogger() {
+        return jbossLogger;
+    }
+
 }
