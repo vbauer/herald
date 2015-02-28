@@ -13,7 +13,7 @@ public final class CollectionUtils {
     }
 
 
-    public static boolean isEmpty(final Collection entries) {
+    public static boolean isEmpty(final Collection<?> entries) {
         return size(entries) == 0;
     }
 
@@ -21,7 +21,7 @@ public final class CollectionUtils {
         return size(entries) == 0;
     }
 
-    public static int size(final Collection entries) {
+    public static int size(final Collection<?> entries) {
         return entries == null ? 0 : entries.size();
     }
 

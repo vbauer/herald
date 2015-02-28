@@ -32,7 +32,6 @@ public class ClassLogBean {
 
     private org.jboss.logging.Logger jbossLogger;;
 
-    @SuppressWarnings("FieldCanBeLocal")
     private int notLogger = DEF_NOT_LOGGER_VALUE;
 
 
@@ -74,6 +73,10 @@ public class ClassLogBean {
 
     public int getNotLogger() {
         return notLogger;
+    }
+
+    public void setNotLogger(final int value) {
+        notLogger = value;
     }
 
 }

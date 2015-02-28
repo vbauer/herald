@@ -4,7 +4,7 @@ package com.github.vbauer.herald.logger.impl;
  * @author Vladislav Bauer
  */
 
-@SuppressWarnings("unused")
+@SuppressWarnings("all")
 public class CommonsLogFactory extends SimpleLogFactory {
 
     public static final String LOGGER_CLASS_NAME = "org.apache.commons.logging.Log";

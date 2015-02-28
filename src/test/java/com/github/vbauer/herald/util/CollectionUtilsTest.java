@@ -20,14 +20,14 @@ public class CollectionUtilsTest extends BasicTest {
 
     @Test
     public void testSizeArray() {
-        Assert.assertEquals(0, CollectionUtils.size((Integer[]) null));
-        Assert.assertEquals(0, CollectionUtils.size(new Integer[]{}));
-        Assert.assertEquals(1, CollectionUtils.size(new Integer[]{1}));
+        Assert.assertEquals(0, CollectionUtils.size((Object[]) null));
+        Assert.assertEquals(0, CollectionUtils.size());
+        Assert.assertEquals(1, CollectionUtils.size(1));
     }
 
     @Test
     public void testSizeCollection() {
-        Assert.assertEquals(0, CollectionUtils.size((Collection) null));
+        Assert.assertEquals(0, CollectionUtils.size((Collection<?>) null));
         Assert.assertEquals(0, CollectionUtils.size(Collections.emptyList()));
         Assert.assertEquals(0, CollectionUtils.size(Collections.emptySet()));
         Assert.assertEquals(1, CollectionUtils.size(Collections.singleton(1)));
@@ -44,7 +44,7 @@ public class CollectionUtilsTest extends BasicTest {
 
     @Test
     public void testIsEmptyCollection() {
-        Assert.assertTrue(CollectionUtils.isEmpty((Collection) null));
+        Assert.assertTrue(CollectionUtils.isEmpty((Collection<?>) null));
         Assert.assertTrue(CollectionUtils.isEmpty(Collections.emptyList()));
         Assert.assertTrue(CollectionUtils.isEmpty(Collections.emptySet()));
         Assert.assertFalse(CollectionUtils.isEmpty(Collections.singleton(1)));
