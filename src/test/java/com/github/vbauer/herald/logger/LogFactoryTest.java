@@ -78,4 +78,13 @@ public class LogFactoryTest extends BasicTest {
         Assert.assertTrue(logFactory.isCompatible(org.jboss.logging.Logger.class));
     }
 
+    @Test
+    public void testSyslog4jLogFactory() {
+        final Syslog4jLogFactory logFactory = new Syslog4jLogFactory();
+        Assert.assertNotNull(logFactory.createLogger(getClass()));
+        Assert.assertNotNull(logFactory.createLogger(Syslog4jLogFactory.DEFAULT_PROTOCOL));
+        Assert.assertFalse(logFactory.isCompatible(null));
+        Assert.assertTrue(logFactory.isCompatible(org.productivity.java.syslog4j.SyslogIF.class));
+    }
+
 }

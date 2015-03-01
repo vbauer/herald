@@ -32,6 +32,8 @@ public class ClassLogBean {
 
     private org.jboss.logging.Logger jbossLogger;;
 
+    private org.productivity.java.syslog4j.SyslogIF syslog4jLogger;
+
     private int notLogger = DEF_NOT_LOGGER_VALUE;
 
 
@@ -69,6 +71,10 @@ public class ClassLogBean {
 
     public org.jboss.logging.Logger getJBossLogger() {
         return jbossLogger;
+    }
+
+    public org.productivity.java.syslog4j.SyslogIF getSyslog4jLogger() {
+        return syslog4jLogger;
     }
 
     public int getNotLogger() {

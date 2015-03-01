@@ -37,6 +37,9 @@ public class LogBean {
     @Log
     private org.jboss.logging.Logger jbossLogger;;
 
+    @Log
+    private org.productivity.java.syslog4j.SyslogIF syslog4jLogger;
+
 
     public static java.util.logging.Logger getStaticJavaUtilLogger() {
         return staticJavaUtilLogger;
@@ -72,6 +75,10 @@ public class LogBean {
 
     public org.jboss.logging.Logger getJBossLogger() {
         return jbossLogger;
+    }
+
+    public org.productivity.java.syslog4j.SyslogIF getSyslog4jLogger() {
+        return syslog4jLogger;
     }
 
 }

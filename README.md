@@ -49,6 +49,7 @@ LoggerInjector.inject(bean1, bean2, bean3);
 * [Apache Log4j](https://logging.apache.org/log4j/1.2/)
 * [Apache Log4j 2](http://logging.apache.org/log4j/2.x/)
 * [JBoss Logging](http://docs.jboss.org/jbosslogging/latest/org/jboss/logging/Logger.html)
+* [Syslog4j](http://syslog4j.org)
 
 It is also possible to add other logging frameworks:
 

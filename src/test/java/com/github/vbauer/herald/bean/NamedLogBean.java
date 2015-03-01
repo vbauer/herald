@@ -1,6 +1,7 @@
 package com.github.vbauer.herald.bean;
 
 import com.github.vbauer.herald.annotation.Log;
+import com.github.vbauer.herald.logger.impl.Syslog4jLogFactory;
 import org.springframework.stereotype.Component;
 
 /**
@@ -40,6 +41,9 @@ public class NamedLogBean {
     @Log(LOGGER_NAME)
     private org.jboss.logging.Logger jbossLogger;;
 
+    @Log(Syslog4jLogFactory.DEFAULT_PROTOCOL)
+    private org.productivity.java.syslog4j.SyslogIF syslog4jLogger;
+
 
     public static java.util.logging.Logger getStaticJavaUtilLogger() {
         return staticJavaUtilLogger;
@@ -75,6 +79,10 @@ public class NamedLogBean {
 
     public org.jboss.logging.Logger getJBossLogger() {
         return jbossLogger;
+    }
+
+    public org.productivity.java.syslog4j.SyslogIF getSyslog4jLogger() {
+        return syslog4jLogger;
     }
 
 }
