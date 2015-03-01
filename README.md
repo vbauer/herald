@@ -29,6 +29,16 @@ LoggerInjector.inject(bean1, bean2, bean3);
 ```
 
 
+## Main features
+
+* Ready-To-Use solution
+* Small library size with zero dependencies
+* Compact and very simple API
+* Compatible with:
+    * Pure J2SE 5+ apps
+    * Spring 2.x+ apps
+
+
 ## Supported logging frameworks
 
 * [JavaTM 2 platform's core logging framework](http://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html)
