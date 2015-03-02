@@ -87,4 +87,13 @@ public class LogFactoryTest extends BasicTest {
         Assert.assertTrue(logFactory.isCompatible(org.productivity.java.syslog4j.SyslogIF.class));
     }
 
+    @Test
+    public void testSyslog4jGraylogLogFactory() {
+        final Syslog4jGraylogLogFactory logFactory = new Syslog4jGraylogLogFactory();
+        Assert.assertNotNull(logFactory.createLogger(getClass()));
+        Assert.assertNotNull(logFactory.createLogger(Syslog4jLogFactory.DEFAULT_PROTOCOL));
+        Assert.assertFalse(logFactory.isCompatible(null));
+        Assert.assertTrue(logFactory.isCompatible(org.graylog2.syslog4j.SyslogIF.class));
+    }
+
 }

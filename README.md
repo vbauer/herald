@@ -50,6 +50,7 @@ LoggerInjector.inject(bean1, bean2, bean3);
 * [Apache Log4j 2](http://logging.apache.org/log4j/2.x/)
 * [JBoss Logging](http://docs.jboss.org/jbosslogging/latest/org/jboss/logging/Logger.html)
 * [Syslog4j](http://syslog4j.org)
+* [Syslog4j fork](https://github.com/Graylog2/syslog4j-graylog2) from [Graylog](https://www.graylog.org)
 
 It is also possible to add other logging frameworks:
 
@@ -73,7 +74,7 @@ Maven:
 <dependency>
     <groupId>com.github.vbauer</groupId>
     <artifactId>herald</artifactId>
-    <version>1.0.6</version>
+    <version>1.0.7</version>
 </dependency>
 ```
 
@@ -86,7 +87,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.vbauer:herald:1.0.6'
+    compile 'com.github.vbauer:herald:1.0.7'
 }
 ```
 
@@ -164,3 +165,5 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+See [LICENSE](LICENSE) file for more details.

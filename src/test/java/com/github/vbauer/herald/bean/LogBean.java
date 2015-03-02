@@ -40,6 +40,9 @@ public class LogBean {
     @Log
     private org.productivity.java.syslog4j.SyslogIF syslog4jLogger;
 
+    @Log
+    private org.graylog2.syslog4j.SyslogIF syslog4jGraylogLogger;
+
 
     public static java.util.logging.Logger getStaticJavaUtilLogger() {
         return staticJavaUtilLogger;
@@ -79,6 +82,10 @@ public class LogBean {
 
     public org.productivity.java.syslog4j.SyslogIF getSyslog4jLogger() {
         return syslog4jLogger;
+    }
+
+    public org.graylog2.syslog4j.SyslogIF getSyslog4jGraylogLogger() {
+        return syslog4jGraylogLogger;
     }
 
 }

@@ -34,6 +34,8 @@ public class ClassLogBean {
 
     private org.productivity.java.syslog4j.SyslogIF syslog4jLogger;
 
+    private org.graylog2.syslog4j.SyslogIF syslog4jGraylogLogger;
+
     private int notLogger = DEF_NOT_LOGGER_VALUE;
 
 
@@ -75,6 +77,10 @@ public class ClassLogBean {
 
     public org.productivity.java.syslog4j.SyslogIF getSyslog4jLogger() {
         return syslog4jLogger;
+    }
+
+    public org.graylog2.syslog4j.SyslogIF getSyslog4jGraylogLogger() {
+        return syslog4jGraylogLogger;
     }
 
     public int getNotLogger() {

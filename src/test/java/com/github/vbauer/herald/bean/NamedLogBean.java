@@ -1,6 +1,7 @@
 package com.github.vbauer.herald.bean;
 
 import com.github.vbauer.herald.annotation.Log;
+import com.github.vbauer.herald.logger.impl.Syslog4jGraylogLogFactory;
 import com.github.vbauer.herald.logger.impl.Syslog4jLogFactory;
 import org.springframework.stereotype.Component;
 
@@ -44,6 +45,9 @@ public class NamedLogBean {
     @Log(Syslog4jLogFactory.DEFAULT_PROTOCOL)
     private org.productivity.java.syslog4j.SyslogIF syslog4jLogger;
 
+    @Log(Syslog4jGraylogLogFactory.DEFAULT_PROTOCOL)
+    private org.graylog2.syslog4j.SyslogIF syslog4jGraylogLogger;
+
 
     public static java.util.logging.Logger getStaticJavaUtilLogger() {
         return staticJavaUtilLogger;
@@ -83,6 +87,10 @@ public class NamedLogBean {
 
     public org.productivity.java.syslog4j.SyslogIF getSyslog4jLogger() {
         return syslog4jLogger;
+    }
+
+    public org.graylog2.syslog4j.SyslogIF getSyslog4jGraylogLogger() {
+        return syslog4jGraylogLogger;
     }
 
 }
