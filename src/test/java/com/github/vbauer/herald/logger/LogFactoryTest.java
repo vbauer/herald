@@ -15,85 +15,36 @@ public class LogFactoryTest extends BasicTest {
 
     
     @Test
-    public void testJavaUtilLogFactory() {
-        final JavaUtilLogFactory logFactory = new JavaUtilLogFactory();
+    public void testLogFactories() {
+        checkLogFactory(new JavaUtilLogFactory(), LOG_NAME, java.util.logging.Logger.class);
+        checkLogFactory(new Log4j2LogFactory(), LOG_NAME, org.apache.logging.log4j.Logger.class);
+        checkLogFactory(new Log4jLogFactory(), LOG_NAME, org.apache.log4j.Logger.class);
+        checkLogFactory(new Slf4jLogFactory(), LOG_NAME, org.slf4j.Logger.class);
+        checkLogFactory(new Slf4jLogFactory(), LOG_NAME, ch.qos.logback.classic.Logger.class);
+        checkLogFactory(new Slf4jExtLogFactory(), LOG_NAME, org.slf4j.ext.XLogger.class);
+        checkLogFactory(new CommonsLogFactory(), LOG_NAME, org.apache.commons.logging.Log.class);
+        checkLogFactory(new JBossLogFactory(), LOG_NAME, org.jboss.logging.Logger.class);
+        checkLogFactory(new FluentLogFactory(), LOG_NAME, org.fluentd.logger.FluentLogger.class);
+        checkLogFactory(
+            new Syslog4jLogFactory(),
+            Syslog4jLogFactory.DEFAULT_PROTOCOL,
+            org.productivity.java.syslog4j.SyslogIF.class
+        );
+        checkLogFactory(
+            new Syslog4jGraylogLogFactory(),
+            Syslog4jLogFactory.DEFAULT_PROTOCOL,
+            org.graylog2.syslog4j.SyslogIF.class
+        );
+    }
+
+    
+    private void checkLogFactory(
+        final LogFactory logFactory, final String loggerName, final Class<?> loggerClass
+    ) {
         Assert.assertNotNull(logFactory.createLogger(getClass()));
-        Assert.assertNotNull(logFactory.createLogger(LOG_NAME));
+        Assert.assertNotNull(logFactory.createLogger(loggerName));
         Assert.assertFalse(logFactory.isCompatible(null));
-        Assert.assertTrue(logFactory.isCompatible(java.util.logging.Logger.class));
+        Assert.assertTrue(logFactory.isCompatible(loggerClass));
     }
     
-    @Test
-    public void testLog4j2LogFactory() {
-        final Log4j2LogFactory logFactory = new Log4j2LogFactory();
-        Assert.assertNotNull(logFactory.createLogger(getClass()));
-        Assert.assertNotNull(logFactory.createLogger(LOG_NAME));
-        Assert.assertFalse(logFactory.isCompatible(null));
-        Assert.assertTrue(logFactory.isCompatible(org.apache.logging.log4j.Logger.class));
-    }
-    
-    @Test
-    public void testLog4jLogFactory() {
-        final Log4jLogFactory logFactory = new Log4jLogFactory();
-        Assert.assertNotNull(logFactory.createLogger(getClass()));
-        Assert.assertNotNull(logFactory.createLogger(LOG_NAME));
-        Assert.assertFalse(logFactory.isCompatible(null));
-        Assert.assertTrue(logFactory.isCompatible(org.apache.log4j.Logger.class));
-    }
-    
-    @Test
-    public void testSlf4jLogFactory() {
-        final Slf4jLogFactory logFactory = new Slf4jLogFactory();
-        Assert.assertNotNull(logFactory.createLogger(getClass()));
-        Assert.assertNotNull(logFactory.createLogger(LOG_NAME));
-        Assert.assertFalse(logFactory.isCompatible(null));
-        Assert.assertTrue(logFactory.isCompatible(org.slf4j.Logger.class));
-        Assert.assertTrue(logFactory.isCompatible(ch.qos.logback.classic.Logger.class));
-    }
-    
-    @Test
-    public void testSlf4jExtLogFactory() {
-        final Slf4jExtLogFactory logFactory = new Slf4jExtLogFactory();
-        Assert.assertNotNull(logFactory.createLogger(getClass()));
-        Assert.assertNotNull(logFactory.createLogger(LOG_NAME));
-        Assert.assertFalse(logFactory.isCompatible(null));
-        Assert.assertTrue(logFactory.isCompatible(org.slf4j.ext.XLogger.class));
-    }
-
-    @Test
-    public void testCommonsLogFactory() {
-        final CommonsLogFactory logFactory = new CommonsLogFactory();
-        Assert.assertNotNull(logFactory.createLogger(getClass()));
-        Assert.assertNotNull(logFactory.createLogger(LOG_NAME));
-        Assert.assertFalse(logFactory.isCompatible(null));
-        Assert.assertTrue(logFactory.isCompatible(org.apache.commons.logging.Log.class));
-    }
-
-    @Test
-    public void testJBossLogFactory() {
-        final JBossLogFactory logFactory = new JBossLogFactory();
-        Assert.assertNotNull(logFactory.createLogger(getClass()));
-        Assert.assertNotNull(logFactory.createLogger(LOG_NAME));
-        Assert.assertFalse(logFactory.isCompatible(null));
-        Assert.assertTrue(logFactory.isCompatible(org.jboss.logging.Logger.class));
-    }
-
-    @Test
-    public void testSyslog4jLogFactory() {
-        final Syslog4jLogFactory logFactory = new Syslog4jLogFactory();
-        Assert.assertNotNull(logFactory.createLogger(getClass()));
-        Assert.assertNotNull(logFactory.createLogger(Syslog4jLogFactory.DEFAULT_PROTOCOL));
-        Assert.assertFalse(logFactory.isCompatible(null));
-        Assert.assertTrue(logFactory.isCompatible(org.productivity.java.syslog4j.SyslogIF.class));
-    }
-
-    @Test
-    public void testSyslog4jGraylogLogFactory() {
-        final Syslog4jGraylogLogFactory logFactory = new Syslog4jGraylogLogFactory();
-        Assert.assertNotNull(logFactory.createLogger(getClass()));
-        Assert.assertNotNull(logFactory.createLogger(Syslog4jLogFactory.DEFAULT_PROTOCOL));
-        Assert.assertFalse(logFactory.isCompatible(null));
-        Assert.assertTrue(logFactory.isCompatible(org.graylog2.syslog4j.SyslogIF.class));
-    }
-
 }

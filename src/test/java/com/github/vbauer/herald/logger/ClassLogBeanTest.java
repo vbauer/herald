@@ -34,6 +34,7 @@ public class ClassLogBeanTest extends BasicSpringTest {
         Assert.notNull(bean.getJBossLogger());
         Assert.notNull(bean.getSyslog4jLogger());
         Assert.notNull(bean.getSyslog4jGraylogLogger());
+        Assert.notNull(bean.getFluentLogger());
         Assert.isTrue(bean.getNotLogger() == ClassLogBean.DEF_NOT_LOGGER_VALUE);
     }
 

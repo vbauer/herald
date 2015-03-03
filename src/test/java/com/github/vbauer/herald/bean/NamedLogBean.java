@@ -48,7 +48,10 @@ public class NamedLogBean {
     @Log(Syslog4jGraylogLogFactory.DEFAULT_PROTOCOL)
     private org.graylog2.syslog4j.SyslogIF syslog4jGraylogLogger;
 
+    @Log(LOGGER_NAME)
+    private org.fluentd.logger.FluentLogger fluentLogger;
 
+    
     public static java.util.logging.Logger getStaticJavaUtilLogger() {
         return staticJavaUtilLogger;
     }
@@ -93,4 +96,8 @@ public class NamedLogBean {
         return syslog4jGraylogLogger;
     }
 
+    public org.fluentd.logger.FluentLogger getFluentLogger() {
+        return fluentLogger;
+    }
+    
 }

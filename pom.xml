@@ -51,6 +51,8 @@
         <slf4j.version>1.7.10</slf4j.version>
         <jboss.logging.version>3.2.1.Final</jboss.logging.version>
         <syslog4j.version>0.9.30</syslog4j.version>
+        <syslog4j.graylog.version>0.9.51</syslog4j.graylog.version>
+        <fluent.logger.version>0.3.1</fluent.logger.version>
 
         <maven.compiler.plugin.version>3.2</maven.compiler.plugin.version>
         <maven.source.plugin.version>2.4</maven.source.plugin.version>
@@ -60,7 +62,6 @@
         <maven.jacoco.plugin.version>0.7.3.201502191951</maven.jacoco.plugin.version>
         <maven.coveralls.plugin.version>3.0.1</maven.coveralls.plugin.version>
         <maven.serviceloader.plugin.version>1.0.3</maven.serviceloader.plugin.version>
-        <syslog4j.graylog.version>0.9.51</syslog4j.graylog.version>
     </properties>
     
     <dependencies>
@@ -172,6 +173,13 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.fluentd</groupId>
+            <artifactId>fluent-logger</artifactId>
+            <version>${fluent.logger.version}</version>
+            <scope>test</scope>
+        </dependency>
+        
     </dependencies>
     
     <build>

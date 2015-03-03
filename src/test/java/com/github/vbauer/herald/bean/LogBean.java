@@ -43,6 +43,8 @@ public class LogBean {
     @Log
     private org.graylog2.syslog4j.SyslogIF syslog4jGraylogLogger;
 
+    @Log
+    private org.fluentd.logger.FluentLogger fluentLogger;
 
     public static java.util.logging.Logger getStaticJavaUtilLogger() {
         return staticJavaUtilLogger;
@@ -86,6 +88,10 @@ public class LogBean {
 
     public org.graylog2.syslog4j.SyslogIF getSyslog4jGraylogLogger() {
         return syslog4jGraylogLogger;
+    }
+
+    public org.fluentd.logger.FluentLogger getFluentLogger() {
+        return fluentLogger;
     }
 
 }

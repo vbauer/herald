@@ -35,6 +35,8 @@ public class ClassLogBean {
     private org.productivity.java.syslog4j.SyslogIF syslog4jLogger;
 
     private org.graylog2.syslog4j.SyslogIF syslog4jGraylogLogger;
+    
+    private org.fluentd.logger.FluentLogger fluentLogger;
 
     private int notLogger = DEF_NOT_LOGGER_VALUE;
 
@@ -83,6 +85,10 @@ public class ClassLogBean {
         return syslog4jGraylogLogger;
     }
 
+    public org.fluentd.logger.FluentLogger getFluentLogger() {
+        return fluentLogger;
+    }
+
     public int getNotLogger() {
         return notLogger;
     }
@@ -90,5 +96,5 @@ public class ClassLogBean {
     public void setNotLogger(final int value) {
         notLogger = value;
     }
-
+    
 }
