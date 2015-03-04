@@ -145,6 +145,8 @@ If you do not specify it, then class name will be used as logger name.
 
 ## FAQ
 
+* **Q:** How to select protocol for Syslog4j?
+    * **A:** Use @Log.name(), default protocol is "udp".
 * **Q:** How to configure Syslog4j with Herald?
     * **A:** Use standard Syslog4j API, ex:
     ```java
