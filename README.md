@@ -143,6 +143,16 @@ private Logger logger;
 If you do not specify it, then class name will be used as logger name.
 
 
+## FAQ
+
+* **Q:** How to configure Syslog4j with Herald?
+    * **A:** Use standard Syslog4j API, ex:
+    ```java
+    final SyslogIF syslog = Syslog.getInstance("udp");
+    syslog.getConfig().setHost("192.168.100.1");
+    syslog.getConfig().setPort(1514);
+    ```
+
 ## Might also like
 
 * [houdini](https://github.com/vbauer/houdini) - Type conversion system for Spring framework.
