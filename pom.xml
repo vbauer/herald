@@ -25,6 +25,11 @@
         <url>https://github.com/vbauer/herald/issues</url>
     </issueManagement>
 
+    <ciManagement>
+        <system>Travis</system>
+        <url>https://travis-ci.org/vbauer/herald</url>
+    </ciManagement>
+
     <developers>
         <developer>
             <id>vbauer</id>
