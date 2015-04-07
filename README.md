@@ -35,7 +35,7 @@ LoggerInjector.inject(bean1, bean2, bean3);
 * Small library size with zero dependencies
 * Compact and very simple API
 * Compatible with:
-    * Pure J2SE 5+ apps
+    * Pure J2SE 6+ apps
     * Spring 2.x+ apps
 
 
