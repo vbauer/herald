@@ -51,27 +51,27 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.6</java.version>
 
-        <spring.version>3.2.13.RELEASE</spring.version>
+        <spring.version>4.1.6.RELEASE</spring.version>
 
         <junit.version>4.12</junit.version>
         <commons.logging.version>1.2</commons.logging.version>
-        <logback.version>1.1.2</logback.version>
+        <logback.version>1.1.3</logback.version>
         <log4j.version>1.2.17</log4j.version>
-        <log4j2.version>2.1</log4j2.version>
-        <slf4j.version>1.7.10</slf4j.version>
+        <log4j2.version>2.2</log4j2.version>
+        <slf4j.version>1.7.12</slf4j.version>
         <jboss.logging.version>3.2.1.Final</jboss.logging.version>
         <syslog4j.version>0.9.30</syslog4j.version>
-        <syslog4j.graylog.version>0.9.51</syslog4j.graylog.version>
+        <syslog4j.graylog.version>0.9.52</syslog4j.graylog.version>
         <fluent.logger.version>0.3.1</fluent.logger.version>
 
-        <maven.compiler.plugin.version>3.2</maven.compiler.plugin.version>
+        <maven.compiler.plugin.version>3.3</maven.compiler.plugin.version>
         <maven.source.plugin.version>2.4</maven.source.plugin.version>
         <maven.surefire.plugin.version>2.18.1</maven.surefire.plugin.version>
-        <maven.checkstyle.plugin.version>2.14</maven.checkstyle.plugin.version>
+        <maven.checkstyle.plugin.version>2.15</maven.checkstyle.plugin.version>
         <maven.pmd.plugin.version>3.4</maven.pmd.plugin.version>
         <maven.animal.sniffer.plugin.version>1.14</maven.animal.sniffer.plugin.version>
         <maven.jacoco.plugin.version>0.7.3.201502191951</maven.jacoco.plugin.version>
-        <maven.coveralls.plugin.version>3.0.1</maven.coveralls.plugin.version>
+        <maven.coveralls.plugin.version>3.1.0</maven.coveralls.plugin.version>
         <maven.serviceloader.plugin.version>1.0.3</maven.serviceloader.plugin.version>
     </properties>
     
