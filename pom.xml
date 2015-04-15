@@ -70,7 +70,7 @@
         <maven.checkstyle.plugin.version>2.15</maven.checkstyle.plugin.version>
         <maven.pmd.plugin.version>3.4</maven.pmd.plugin.version>
         <maven.animal.sniffer.plugin.version>1.14</maven.animal.sniffer.plugin.version>
-        <maven.jacoco.plugin.version>0.7.3.201502191951</maven.jacoco.plugin.version>
+        <maven.jacoco.plugin.version>0.7.4.201502262128</maven.jacoco.plugin.version>
         <maven.coveralls.plugin.version>3.1.0</maven.coveralls.plugin.version>
         <maven.serviceloader.plugin.version>1.0.3</maven.serviceloader.plugin.version>
     </properties>
