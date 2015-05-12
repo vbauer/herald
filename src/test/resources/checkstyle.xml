@@ -86,6 +86,7 @@
         <module name="ModifiedControlVariable"/>
         <module name="ModifierOrder"/>
         <module name="MultipleVariableDeclarations"/>
+        <module name="MultipleStringLiterals"/>
         <module name="MutableException"/>
         <module name="NPathComplexity"/>
         <module name="NeedBraces"/>
@@ -113,6 +114,7 @@
         <module name="RedundantImport"/>
         <module name="RedundantModifier"/>
         <module name="RedundantThrows"/>
+        <module name="ReturnCount"/>
         <module name="RightCurly"/>
         <module name="SimplifyBooleanExpression"/>
         <module name="SimplifyBooleanReturn"/>
@@ -122,6 +124,7 @@
         <module name="ThrowsCount">
             <property name="max" value="3"/>
         </module>
+        <module name="TodoComment"/>
         <module name="TrailingComment"/>
         <module name="TypeName"/>
         <module name="TypecastParenPad"/>
@@ -152,17 +155,14 @@
         <!--<module name="JavadocStyle"/>-->
         <!--<module name="JavadocVariable"/>-->
         <!--<module name="MissingCtor"/>-->
-        <!--<module name="MultipleStringLiterals"/>-->
         <!--<module name="Regexp"/>-->
         <!--<module name="RegexpHeader"/>-->
         <!--<module name="RegexpMultiline"/>-->
         <!--<module name="RegexpSingleline"/>-->
         <!--<module name="RegexpSinglelineJava"/>-->
         <!--<module name="RequireThis"/>-->
-        <!--<module name="ReturnCount"/>-->
         <!--<module name="SuperClone"/>-->
         <!--<module name="SuperFinalize"/>-->
-        <!--<module name="TodoComment"/>-->
 
     </module>
 </module>

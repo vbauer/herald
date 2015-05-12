@@ -57,15 +57,20 @@ public final class LoggerInjector {
         final boolean isSyntheticField = field.isSynthetic();
         if (!isSyntheticField) {
             final Class<?> beanClass = bean.getClass();
-            final boolean hasClassAnnotation = beanClass.getAnnotation(Log.class) != null;
-
-            if (hasClassAnnotation) {
-                final Class<?> fieldType = field.getType();
-                return LogFactoryUtils.hasCompatible(logFactories, fieldType);
-            }
-            return field.getAnnotation(Log.class) != null;
+            return needToInjectLogger(beanClass, logFactories, field);
         }
         return false;
+    }
+
+    private static boolean needToInjectLogger(
+        final Class<?> beanClass, final Collection<LogFactory> logFactories, final Field field
+    ) {
+        final boolean hasAnnotation = beanClass.getAnnotation(Log.class) != null;
+        if (hasAnnotation) {
+            final Class<?> fieldType = field.getType();
+            return LogFactoryUtils.hasCompatible(logFactories, fieldType);
+        }
+        return field.getAnnotation(Log.class) != null;
     }
 
     private static void injectLogger(
