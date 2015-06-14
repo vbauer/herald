@@ -41,4 +41,9 @@ public class ReflectionUtilsTest extends BasicTest {
         ReflectionUtils.handleReflectionException(new RuntimeException());
     }
 
+    @Test(expected = Error.class)
+    public void testHandleReflectionError() {
+        ReflectionUtils.handleReflectionException(new Error());
+    }
+
 }

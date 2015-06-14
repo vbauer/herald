@@ -38,6 +38,8 @@ public final class ReflectionUtils {
     public static <T> T handleReflectionException(final Throwable ex) {
         if (ex instanceof RuntimeException) {
             throw (RuntimeException) ex;
+        } else if (ex instanceof Error) {
+            throw (Error) ex;
         }
         throw new RuntimeException(ex);
     }
