@@ -2,6 +2,7 @@ package com.github.vbauer.herald.util;
 
 import com.github.vbauer.herald.annotation.Log;
 import com.github.vbauer.herald.exception.MissedLogFactoryException;
+import com.github.vbauer.herald.exception.LoggerInstantiationException;
 import com.github.vbauer.herald.logger.LogFactory;
 
 import java.lang.reflect.Field;
@@ -79,29 +80,35 @@ public final class LoggerInjector {
         final boolean isAccessible = field.isAccessible();
         field.setAccessible(true);
 
-        try {
-            final Class<?> beanClass = bean.getClass();
-            final Log annotation = getAnnotation(beanClass, field);
-            final String loggerName = annotation.value();
-            final Class<?> loggerClass = field.getType();
+        // Read context parameters.
+        final Class<?> beanClass = bean.getClass();
+        final Class<?> loggerClass = field.getType();
+        final Log annotation = ReflectionUtils.findAnnotation(Log.class, beanClass, field);
 
+        final boolean required = annotation.required();
+        final String loggerName = annotation.value();
+
+        try {
+            // Find corresponding logger factory.
             final LogFactory logFactory = LogFactoryUtils.findCompatible(logFactories, loggerClass);
             if (logFactory == null) {
-                throw new MissedLogFactoryException(loggerClass, annotation);
+                throw new MissedLogFactoryException(loggerClass);
             }
 
+            // Create logger
             final Object logger = createLogger(logFactory, loggerName, beanClass);
+            if (logger == null) {
+                throw new LoggerInstantiationException(logFactory);
+            }
+
             field.set(bean, logger);
-        } catch (final IllegalAccessException ex) {
-            ReflectionUtils.handleReflectionException(ex);
+        } catch (final Throwable ex) {
+            if (required) {
+                ReflectionUtils.handleReflectionException(ex);
+            }
         } finally {
             field.setAccessible(isAccessible);
         }
-    }
-
-    private static Log getAnnotation(final Class<?> beanClass, final Field field) {
-        final Log fieldAnnotation = field.getAnnotation(Log.class);
-        return fieldAnnotation == null ? beanClass.getAnnotation(Log.class) : fieldAnnotation;
     }
 
     private static Object createLogger(final LogFactory logFactory, final String loggerName, final Class<?> beanClass) {

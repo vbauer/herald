@@ -1,30 +1,22 @@
 package com.github.vbauer.herald.exception;
 
-import com.github.vbauer.herald.annotation.Log;
-
 /**
  * @author Vladislav Bauer
  */
 
 @SuppressWarnings("serial")
-public class MissedLogFactoryException extends RuntimeException {
+public class MissedLogFactoryException extends HeraldException {
 
     private final Class<?> loggerClass;
-    private final Log logAnnotation;
 
 
-    public MissedLogFactoryException(final Class<?> loggerClass, final Log logAnnotation) {
+    public MissedLogFactoryException(final Class<?> loggerClass) {
         this.loggerClass = loggerClass;
-        this.logAnnotation = logAnnotation;
     }
 
 
     public Class<?> getLoggerClass() {
         return loggerClass;
-    }
-
-    public Log getLogAnnotation() {
-        return logAnnotation;
     }
 
 

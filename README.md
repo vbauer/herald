@@ -37,6 +37,7 @@ LoggerInjector.inject(bean1, bean2, bean3);
 * Compatible with:
     * Pure J2SE 6+ apps
     * Spring 2.x+ apps
+    * Android apps
 
 
 ## Supported logging frameworks
@@ -141,6 +142,9 @@ private Logger logger;
 ```
 
 If you do not specify it, then class name will be used as logger name.
+
+If you want to specify mandatory for logger instantiation, use `required` parameter (default is `true`).
+Use `@Log(required = false)` to make your logger object optional (it could be useful in some rare cases).
 
 
 ## FAQ

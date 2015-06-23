@@ -20,4 +20,10 @@ public @interface Log {
      */
     String value() default "";
 
+    /**
+     * Check if logger object must be instantiated or not.
+     * @return mandatory
+     */
+    boolean required() default true;
+
 }

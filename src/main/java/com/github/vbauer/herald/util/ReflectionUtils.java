@@ -1,5 +1,7 @@
 package com.github.vbauer.herald.util;
 
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 /**
@@ -42,6 +44,13 @@ public final class ReflectionUtils {
             throw (Error) ex;
         }
         throw new RuntimeException(ex);
+    }
+
+    public static <T extends Annotation> T findAnnotation(
+        final Class<T> annotationClass, final Class<?> beanClass, final Field field
+    ) {
+        final T fieldAnnotation = field.getAnnotation(annotationClass);
+        return fieldAnnotation == null ? beanClass.getAnnotation(annotationClass) : fieldAnnotation;
     }
 
 }

@@ -23,15 +23,9 @@ public class LoggerInjectorTest extends BasicTest {
         checkUtilConstructorContract(LoggerInjector.class);
     }
 
-    @Test
+    @Test(expected = MissedLogFactoryException.class)
     public void testIncorrectLogger() {
-        try {
-            Assert.fail(LoggerInjector.inject(new IncorrectLogBean()).toString());
-        } catch (final MissedLogFactoryException ex) {
-            Assert.assertNotNull(ex.getLogAnnotation());
-            Assert.assertNotNull(ex.getLoggerClass());
-            Assert.assertNotNull(ex.getMessage());
-        }
+        Assert.fail(LoggerInjector.inject(new IncorrectLogBean()).toString());
     }
 
     @Test

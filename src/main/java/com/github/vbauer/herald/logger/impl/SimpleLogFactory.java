@@ -31,12 +31,21 @@ public abstract class SimpleLogFactory implements LogFactory {
 
     @Override
     public Object createLogger(final Class<?> clazz) {
-        return ReflectionUtils.invokeStatic(loggerFactoryClassName, loggerFactoryMethod, clazz);
+        return createLoggerObject(clazz);
     }
 
     @Override
     public Object createLogger(final String name) {
-        return ReflectionUtils.invokeStatic(loggerFactoryClassName, loggerFactoryMethod, name);
+        return createLoggerObject(name);
+    }
+
+
+    private Object createLoggerObject(final Object id) {
+        return ReflectionUtils.invokeStatic(
+            loggerFactoryClassName,
+            loggerFactoryMethod,
+            id
+        );
     }
 
 }
