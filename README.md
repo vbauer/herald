@@ -70,7 +70,7 @@ Maven:
 <dependency>
     <groupId>com.github.vbauer</groupId>
     <artifactId>herald</artifactId>
-    <version>1.0.8</version>
+    <version>1.0.9</version>
 </dependency>
 ```
 
@@ -83,7 +83,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.vbauer:herald:1.0.8'
+    compile 'com.github.vbauer:herald:1.0.9'
 }
 ```
 
