@@ -89,7 +89,7 @@ dependencies {
 
 ## Configuration
 
-### Java / Android
+### Java configuration
 
 The project is integrated with Spring & Guice frameworks, but can be used without it:
 ```java
@@ -100,6 +100,20 @@ LoggerInjector.inject(bean1, bean2, bean3);
 ```
 
 As you can see, it is unnecessary to do some specific configuration when you use it in Java without IOC container.  
+
+### Android configuration
+
+You need to create base class for your component (ex: Activity) and call `LoggerInjector.inject`:
+
+```java
+public class BaseActivity extends Activity {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        LoggerInjector.inject(this);
+    }
+}
+```
 
 ### Guice configuration
 
