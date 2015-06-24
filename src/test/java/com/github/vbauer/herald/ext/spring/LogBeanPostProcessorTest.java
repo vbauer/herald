@@ -1,9 +1,9 @@
-package com.github.vbauer.herald.processor;
+package com.github.vbauer.herald.ext.spring;
 
-import com.github.vbauer.herald.bean.ClassLogBean;
-import com.github.vbauer.herald.bean.LogBean;
-import com.github.vbauer.herald.bean.NamedLogBean;
-import com.github.vbauer.herald.core.BasicSpringTest;
+import com.github.vbauer.herald.ext.spring.bean.ClassLogBean;
+import com.github.vbauer.herald.ext.spring.bean.LogBean;
+import com.github.vbauer.herald.ext.spring.bean.NamedLogBean;
+import com.github.vbauer.herald.ext.spring.core.BasicSpringTest;
 import com.github.vbauer.herald.logger.ClassLogBeanTest;
 import com.github.vbauer.herald.logger.LogBeanTest;
 import com.github.vbauer.herald.logger.NamedLogBeanTest;

@@ -1,8 +1,6 @@
-package com.github.vbauer.herald.bean;
+package com.github.vbauer.herald.ext.spring.bean;
 
 import com.github.vbauer.herald.annotation.Log;
-import com.github.vbauer.herald.logger.impl.Syslog4jGraylogLogFactory;
-import com.github.vbauer.herald.logger.impl.Syslog4jLogFactory;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,48 +8,44 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class NamedLogBean {
+public class LogBean {
 
-    private static final String LOGGER_NAME = "logger";
-
-
-    @Log(LOGGER_NAME)
+    @Log
     private static java.util.logging.Logger staticJavaUtilLogger;
 
-    @Log(LOGGER_NAME)
+    @Log
     private java.util.logging.Logger javaUtilLogger;
 
-    @Log(LOGGER_NAME)
+    @Log
     private org.apache.commons.logging.Log commonsLoggingLogger;
 
-    @Log(LOGGER_NAME)
+    @Log
     private ch.qos.logback.classic.Logger logbackLogger;
 
-    @Log(LOGGER_NAME)
+    @Log
     private org.slf4j.Logger slf4jLogger;
 
-    @Log(LOGGER_NAME)
-    private org.apache.log4j.Logger log4jLogger;
-
-    @Log(LOGGER_NAME)
+    @Log
     private org.slf4j.ext.XLogger slf4jExtLogger;
 
-    @Log(LOGGER_NAME)
+    @Log
+    private org.apache.log4j.Logger log4jLogger;
+
+    @Log
     private org.apache.logging.log4j.Logger log4j2Logger;
 
-    @Log(LOGGER_NAME)
+    @Log
     private org.jboss.logging.Logger jbossLogger;;
 
-    @Log(Syslog4jLogFactory.DEFAULT_PROTOCOL)
+    @Log
     private org.productivity.java.syslog4j.SyslogIF syslog4jLogger;
 
-    @Log(Syslog4jGraylogLogFactory.DEFAULT_PROTOCOL)
+    @Log
     private org.graylog2.syslog4j.SyslogIF syslog4jGraylogLogger;
 
-    @Log(LOGGER_NAME)
+    @Log
     private org.fluentd.logger.FluentLogger fluentLogger;
 
-    
     public static java.util.logging.Logger getStaticJavaUtilLogger() {
         return staticJavaUtilLogger;
     }
@@ -99,5 +93,5 @@ public class NamedLogBean {
     public org.fluentd.logger.FluentLogger getFluentLogger() {
         return fluentLogger;
     }
-    
+
 }

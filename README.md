@@ -5,8 +5,9 @@
 
 > "Why, sometimes I've believed as many as six impossible things before breakfast." - Lewis Carroll, Alice in Wonderland.
 
-**Herald** provides a very simple [BeanPostProcessor](http://docs.spring.io/spring-framework/docs/2.5.6/api/org/springframework/beans/factory/config/BeanPostProcessor.html) which does all the magic for you.
-You can annotate any field of Spring bean with a `@Log` annotation to let Herald inject suitable logger in this field. It does not matter whether it is a static field or not.
+**Herald** provides a very simple way to initialize logger objects and does all magic for you.
+You can annotate any field of some class with a `@Log` annotation to let Herald inject suitable logger in this field. 
+It does not matter whether it is a static field or not.
 
 Just forget about this code:
 ```java
@@ -20,14 +21,6 @@ Write less code, use short form:
 private Logger logger;
 ```
 
-The project is integrated with Spring framework, but can be used without it:
-```java
-LoggerInjector.inject(bean);
-
-// or even using varargs:
-LoggerInjector.inject(bean1, bean2, bean3);
-```
-
 
 ## Main features
 
@@ -35,9 +28,10 @@ LoggerInjector.inject(bean1, bean2, bean3);
 * Small library size with zero dependencies
 * Compact and very simple API
 * Compatible with:
-    * Pure J2SE 6+ apps
-    * Spring 2.x+ apps
-    * Android apps
+    * Pure J2SE 6+
+    * Spring 2.x+
+    * Guice 2.x+
+    * Android
 
 
 ## Supported logging frameworks
@@ -93,10 +87,33 @@ dependencies {
 }
 ```
 
+## Configuration
 
-## Spring configuration
+### Java / Android
 
-### Java based configuration
+The project is integrated with Spring & Guice frameworks, but can be used without it:
+```java
+LoggerInjector.inject(bean);
+
+// or even using varargs:
+LoggerInjector.inject(bean1, bean2, bean3);
+```
+
+As you can see, it is unnecessary to do some specific configuration when you use it in Java without IOC container.  
+
+### Guice configuration
+
+**Herald** contains specific Guice module to suppoer `@Log` annotation (`com.github.vbauer.herald.ext.guice.LogModule`):
+
+```java
+final Injector injector = Guice.createInjector(new LogModule());
+```
+
+Now, all you beans will be processed with LoggerInjector and logger fields will be initialized if necessary.
+
+### Spring configuration
+
+#### Java based configuration
 
 You need to configure only one `BeanPostProcessor`:
 
@@ -112,7 +129,7 @@ public class AppContext {
 }
 ```
 
-### XML Schema-based configuration
+#### XML Schema-based configuration
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -122,7 +139,7 @@ public class AppContext {
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean class="com.github.vbauer.herald.processor.LogBeanPostProcessor" />
+    <bean class="com.github.vbauer.herald.ext.spring.LogBeanPostProcessor" />
 
 </beans>
 ```
@@ -162,7 +179,7 @@ Use `@Log(required = false)` to make your logger object optional (it could be us
 ## Might also like
 
 * [jackdaw](https://github.com/vbauer/jackdaw) - Java Annotation Processor which allows to simplify development.
-* [houdini](https://github.com/vbauer/houdini) - Type conversion system for Spring framework.
+* [houdini](https://github.com/vbauer/houdini) - Type conversion system for Java projects.
 * [caesar](https://github.com/vbauer/caesar) - Library that allows to create async beans from sync beans.
 * [commons-vfs2-cifs](https://github.com/vbauer/commons-vfs2-cifs) - SMB/CIFS provider for Commons VFS.
 * [avconv4java](https://github.com/vbauer/avconv4java) - Java interface to avconv tool.

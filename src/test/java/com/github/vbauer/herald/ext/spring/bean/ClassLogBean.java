@@ -1,4 +1,4 @@
-package com.github.vbauer.herald.bean;
+package com.github.vbauer.herald.ext.spring.bean;
 
 import com.github.vbauer.herald.annotation.Log;
 import org.springframework.stereotype.Component;
@@ -7,44 +7,39 @@ import org.springframework.stereotype.Component;
  * @author Vladislav Bauer
  */
 
+@Log
 @Component
-public class LogBean {
+public class ClassLogBean {
 
-    @Log
+    public static final int DEF_NOT_LOGGER_VALUE = 5;
+
+
     private static java.util.logging.Logger staticJavaUtilLogger;
 
-    @Log
     private java.util.logging.Logger javaUtilLogger;
 
-    @Log
     private org.apache.commons.logging.Log commonsLoggingLogger;
 
-    @Log
     private ch.qos.logback.classic.Logger logbackLogger;
 
-    @Log
     private org.slf4j.Logger slf4jLogger;
 
-    @Log
     private org.slf4j.ext.XLogger slf4jExtLogger;
 
-    @Log
     private org.apache.log4j.Logger log4jLogger;
 
-    @Log
     private org.apache.logging.log4j.Logger log4j2Logger;
 
-    @Log
     private org.jboss.logging.Logger jbossLogger;;
 
-    @Log
     private org.productivity.java.syslog4j.SyslogIF syslog4jLogger;
 
-    @Log
     private org.graylog2.syslog4j.SyslogIF syslog4jGraylogLogger;
-
-    @Log
+    
     private org.fluentd.logger.FluentLogger fluentLogger;
+
+    private int notLogger = DEF_NOT_LOGGER_VALUE;
+
 
     public static java.util.logging.Logger getStaticJavaUtilLogger() {
         return staticJavaUtilLogger;
@@ -94,4 +89,12 @@ public class LogBean {
         return fluentLogger;
     }
 
+    public int getNotLogger() {
+        return notLogger;
+    }
+
+    public void setNotLogger(final int value) {
+        notLogger = value;
+    }
+    
 }

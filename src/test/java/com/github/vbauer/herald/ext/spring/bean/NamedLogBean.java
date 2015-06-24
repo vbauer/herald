@@ -1,46 +1,57 @@
-package com.github.vbauer.herald.bean;
+package com.github.vbauer.herald.ext.spring.bean;
 
 import com.github.vbauer.herald.annotation.Log;
+import com.github.vbauer.herald.logger.impl.Syslog4jGraylogLogFactory;
+import com.github.vbauer.herald.logger.impl.Syslog4jLogFactory;
 import org.springframework.stereotype.Component;
 
 /**
  * @author Vladislav Bauer
  */
 
-@Log
 @Component
-public class ClassLogBean {
+public class NamedLogBean {
 
-    public static final int DEF_NOT_LOGGER_VALUE = 5;
+    private static final String LOGGER_NAME = "logger";
 
 
+    @Log(LOGGER_NAME)
     private static java.util.logging.Logger staticJavaUtilLogger;
 
+    @Log(LOGGER_NAME)
     private java.util.logging.Logger javaUtilLogger;
 
+    @Log(LOGGER_NAME)
     private org.apache.commons.logging.Log commonsLoggingLogger;
 
+    @Log(LOGGER_NAME)
     private ch.qos.logback.classic.Logger logbackLogger;
 
+    @Log(LOGGER_NAME)
     private org.slf4j.Logger slf4jLogger;
 
-    private org.slf4j.ext.XLogger slf4jExtLogger;
-
+    @Log(LOGGER_NAME)
     private org.apache.log4j.Logger log4jLogger;
 
+    @Log(LOGGER_NAME)
+    private org.slf4j.ext.XLogger slf4jExtLogger;
+
+    @Log(LOGGER_NAME)
     private org.apache.logging.log4j.Logger log4j2Logger;
 
+    @Log(LOGGER_NAME)
     private org.jboss.logging.Logger jbossLogger;;
 
+    @Log(Syslog4jLogFactory.DEFAULT_PROTOCOL)
     private org.productivity.java.syslog4j.SyslogIF syslog4jLogger;
 
+    @Log(Syslog4jGraylogLogFactory.DEFAULT_PROTOCOL)
     private org.graylog2.syslog4j.SyslogIF syslog4jGraylogLogger;
-    
+
+    @Log(LOGGER_NAME)
     private org.fluentd.logger.FluentLogger fluentLogger;
 
-    private int notLogger = DEF_NOT_LOGGER_VALUE;
-
-
+    
     public static java.util.logging.Logger getStaticJavaUtilLogger() {
         return staticJavaUtilLogger;
     }
@@ -87,14 +98,6 @@ public class ClassLogBean {
 
     public org.fluentd.logger.FluentLogger getFluentLogger() {
         return fluentLogger;
-    }
-
-    public int getNotLogger() {
-        return notLogger;
-    }
-
-    public void setNotLogger(final int value) {
-        notLogger = value;
     }
     
 }

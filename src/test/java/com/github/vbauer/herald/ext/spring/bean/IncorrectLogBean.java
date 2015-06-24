@@ -1,4 +1,4 @@
-package com.github.vbauer.herald.bean;
+package com.github.vbauer.herald.ext.spring.bean;
 
 import com.github.vbauer.herald.annotation.Log;
 

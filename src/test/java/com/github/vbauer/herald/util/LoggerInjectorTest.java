@@ -1,9 +1,9 @@
 package com.github.vbauer.herald.util;
 
-import com.github.vbauer.herald.bean.ClassLogBean;
-import com.github.vbauer.herald.bean.IncorrectLogBean;
-import com.github.vbauer.herald.bean.LogBean;
-import com.github.vbauer.herald.bean.NamedLogBean;
+import com.github.vbauer.herald.ext.spring.bean.ClassLogBean;
+import com.github.vbauer.herald.ext.spring.bean.IncorrectLogBean;
+import com.github.vbauer.herald.ext.spring.bean.LogBean;
+import com.github.vbauer.herald.ext.spring.bean.NamedLogBean;
 import com.github.vbauer.herald.core.BasicTest;
 import com.github.vbauer.herald.exception.MissedLogFactoryException;
 import com.github.vbauer.herald.logger.ClassLogBeanTest;

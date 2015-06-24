@@ -1,7 +1,7 @@
 package com.github.vbauer.herald.logger;
 
-import com.github.vbauer.herald.bean.NamedLogBean;
-import com.github.vbauer.herald.core.BasicSpringTest;
+import com.github.vbauer.herald.ext.spring.bean.NamedLogBean;
+import com.github.vbauer.herald.ext.spring.core.BasicSpringTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
