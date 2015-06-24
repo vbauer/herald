@@ -103,7 +103,7 @@ As you can see, it is unnecessary to do some specific configuration when you use
 
 ### Guice configuration
 
-**Herald** contains specific Guice module to suppoer `@Log` annotation (`com.github.vbauer.herald.ext.guice.LogModule`):
+**Herald** contains specific Guice module to support `@Log` annotation (`com.github.vbauer.herald.ext.guice.LogModule`):
 
 ```java
 final Injector injector = Guice.createInjector(new LogModule());
