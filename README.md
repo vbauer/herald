@@ -28,10 +28,11 @@ private Logger logger;
 * Small library size with zero dependencies
 * Compact and very simple API
 * Compatible with:
-    * Pure J2SE 6+
-    * Spring 2.x+
-    * Guice 2.x+
-    * Android
+    * Pure Java SE
+    * [Spring Framework](https://spring.io)
+    * [Guice](https://github.com/google/guice)
+    * [RoboGuice](https://github.com/roboguice/roboguice)
+    * [Android Platform](http://developer.android.com)
 
 
 ## Supported logging frameworks
@@ -115,7 +116,7 @@ public class BaseActivity extends Activity {
 }
 ```
 
-### Guice configuration
+### Guice / RoboGuice configuration
 
 **Herald** contains specific Guice module to support `@Log` annotation (`com.github.vbauer.herald.ext.guice.LogModule`):
 
