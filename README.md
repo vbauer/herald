@@ -124,7 +124,7 @@ public class BaseActivity extends Activity {
 final Injector injector = Guice.createInjector(new LogModule());
 ```
 
-Now, all you beans will be processed with LoggerInjector and logger fields will be initialized if necessary.
+Now, all your beans will be processed with LoggerInjector and logger fields will be initialized if necessary.
 
 ### Spring configuration
 
