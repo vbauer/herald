@@ -30,13 +30,15 @@ public class ClassLogBean {
 
     private org.apache.logging.log4j.Logger log4j2Logger;
 
-    private org.jboss.logging.Logger jbossLogger;;
+    private org.jboss.logging.Logger jbossLogger;
 
     private org.productivity.java.syslog4j.SyslogIF syslog4jLogger;
 
     private org.graylog2.syslog4j.SyslogIF syslog4jGraylogLogger;
     
     private org.fluentd.logger.FluentLogger fluentLogger;
+
+    private play.Logger.ALogger playLogger;
 
     private int notLogger = DEF_NOT_LOGGER_VALUE;
 
@@ -93,8 +95,8 @@ public class ClassLogBean {
         return notLogger;
     }
 
-    public void setNotLogger(final int value) {
-        notLogger = value;
+    public play.Logger.ALogger getPlayLogger() {
+        return playLogger;
     }
-    
+
 }

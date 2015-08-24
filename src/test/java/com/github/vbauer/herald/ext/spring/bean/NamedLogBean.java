@@ -40,7 +40,7 @@ public class NamedLogBean {
     private org.apache.logging.log4j.Logger log4j2Logger;
 
     @Log(LOGGER_NAME)
-    private org.jboss.logging.Logger jbossLogger;;
+    private org.jboss.logging.Logger jbossLogger;
 
     @Log(Syslog4jLogFactory.DEFAULT_PROTOCOL)
     private org.productivity.java.syslog4j.SyslogIF syslog4jLogger;
@@ -50,6 +50,9 @@ public class NamedLogBean {
 
     @Log(LOGGER_NAME)
     private org.fluentd.logger.FluentLogger fluentLogger;
+
+    @Log(LOGGER_NAME)
+    private play.Logger.ALogger playLogger;
 
     
     public static java.util.logging.Logger getStaticJavaUtilLogger() {
@@ -99,5 +102,9 @@ public class NamedLogBean {
     public org.fluentd.logger.FluentLogger getFluentLogger() {
         return fluentLogger;
     }
-    
+
+    public play.Logger.ALogger getPlayLogger() {
+        return playLogger;
+    }
+
 }

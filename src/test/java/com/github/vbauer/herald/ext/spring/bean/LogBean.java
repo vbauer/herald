@@ -35,7 +35,7 @@ public class LogBean {
     private org.apache.logging.log4j.Logger log4j2Logger;
 
     @Log
-    private org.jboss.logging.Logger jbossLogger;;
+    private org.jboss.logging.Logger jbossLogger;
 
     @Log
     private org.productivity.java.syslog4j.SyslogIF syslog4jLogger;
@@ -45,6 +45,10 @@ public class LogBean {
 
     @Log
     private org.fluentd.logger.FluentLogger fluentLogger;
+
+    @Log
+    private play.Logger.ALogger playLogger;
+
 
     public static java.util.logging.Logger getStaticJavaUtilLogger() {
         return staticJavaUtilLogger;
@@ -92,6 +96,10 @@ public class LogBean {
 
     public org.fluentd.logger.FluentLogger getFluentLogger() {
         return fluentLogger;
+    }
+
+    public play.Logger.ALogger getPlayLogger() {
+        return playLogger;
     }
 
 }

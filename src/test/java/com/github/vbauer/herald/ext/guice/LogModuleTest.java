@@ -33,7 +33,7 @@ public class LogModuleTest extends BasicTest {
     }
 
 
-    public <T> T initAndGetBean(final Class<T> type) {
+    private <T> T initAndGetBean(final Class<T> type) {
         final Injector injector = Guice.createInjector(new LogModule());
         return injector.getInstance(type);
     }

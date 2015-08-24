@@ -48,6 +48,7 @@ private Logger logger;
 * [Syslog4j](http://syslog4j.org)
 * [Syslog4j fork](https://github.com/Graylog2/syslog4j-graylog2) from [Graylog](https://www.graylog.org)
 * [Fluent Logger for Java](https://github.com/fluent/fluent-logger-java)
+* [Play Framework Logging API](https://www.playframework.com/documentation/2.4.x/JavaLogging)
 
 It is also possible to add other logging frameworks:
 

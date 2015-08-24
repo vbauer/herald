@@ -64,6 +64,7 @@
         <syslog4j.version>0.9.30</syslog4j.version>
         <syslog4j.graylog.version>0.9.53</syslog4j.graylog.version>
         <fluent.logger.version>0.3.1</fluent.logger.version>
+        <play.version>2.4.2</play.version>
 
         <maven.compiler.plugin.version>3.3</maven.compiler.plugin.version>
         <maven.source.plugin.version>2.4</maven.source.plugin.version>
@@ -202,7 +203,14 @@
             <version>${fluent.logger.version}</version>
             <scope>test</scope>
         </dependency>
-        
+
+        <dependency>
+            <groupId>com.typesafe.play</groupId>
+            <artifactId>play_2.10</artifactId>
+            <version>${play.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
     
     <build>

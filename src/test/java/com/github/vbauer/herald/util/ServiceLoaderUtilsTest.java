@@ -13,7 +13,7 @@ import java.util.Collection;
 
 public class ServiceLoaderUtilsTest extends BasicTest {
 
-    private static final int LOGGERS_COUNT = 10;
+    private static final int LOGGERS_COUNT = 11;
 
     
     @Test
