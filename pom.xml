@@ -51,7 +51,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.6</java.version>
 
-        <spring.version>4.1.6.RELEASE</spring.version>
+        <spring.version>4.2.0.RELEASE</spring.version>
         <guice.version>4.0</guice.version>
 
         <junit.version>4.12</junit.version>
@@ -63,7 +63,7 @@
         <jboss.logging.version>3.3.0.Final</jboss.logging.version>
         <syslog4j.version>0.9.30</syslog4j.version>
         <syslog4j.graylog.version>0.9.53</syslog4j.graylog.version>
-        <fluent.logger.version>0.3.1</fluent.logger.version>
+        <fluent.logger.version>0.3.2</fluent.logger.version>
         <play.version>2.4.2</play.version>
 
         <maven.compiler.plugin.version>3.3</maven.compiler.plugin.version>
@@ -72,7 +72,7 @@
         <maven.checkstyle.plugin.version>2.15</maven.checkstyle.plugin.version>
         <maven.pmd.plugin.version>3.4</maven.pmd.plugin.version>
         <maven.animal.sniffer.plugin.version>1.14</maven.animal.sniffer.plugin.version>
-        <maven.jacoco.plugin.version>0.7.4.201502262128</maven.jacoco.plugin.version>
+        <maven.jacoco.plugin.version>0.7.5.201505241946</maven.jacoco.plugin.version>
         <maven.coveralls.plugin.version>3.1.0</maven.coveralls.plugin.version>
         <maven.serviceloader.plugin.version>1.0.3</maven.serviceloader.plugin.version>
     </properties>
