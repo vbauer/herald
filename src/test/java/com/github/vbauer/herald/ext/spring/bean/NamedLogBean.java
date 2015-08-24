@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
+@SuppressWarnings("all")
 public class NamedLogBean {
 
     private static final String LOGGER_NAME = "logger";
@@ -51,10 +52,7 @@ public class NamedLogBean {
     @Log(LOGGER_NAME)
     private org.fluentd.logger.FluentLogger fluentLogger;
 
-    @Log(LOGGER_NAME)
-    private play.Logger.ALogger playLogger;
 
-    
     public static java.util.logging.Logger getStaticJavaUtilLogger() {
         return staticJavaUtilLogger;
     }
@@ -101,10 +99,6 @@ public class NamedLogBean {
 
     public org.fluentd.logger.FluentLogger getFluentLogger() {
         return fluentLogger;
-    }
-
-    public play.Logger.ALogger getPlayLogger() {
-        return playLogger;
     }
 
 }

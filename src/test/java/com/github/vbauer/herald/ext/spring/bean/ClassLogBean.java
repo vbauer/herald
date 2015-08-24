@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Log
 @Component
+@SuppressWarnings("all")
 public class ClassLogBean {
 
     public static final int DEF_NOT_LOGGER_VALUE = 5;
@@ -37,8 +38,6 @@ public class ClassLogBean {
     private org.graylog2.syslog4j.SyslogIF syslog4jGraylogLogger;
     
     private org.fluentd.logger.FluentLogger fluentLogger;
-
-    private play.Logger.ALogger playLogger;
 
     private int notLogger = DEF_NOT_LOGGER_VALUE;
 
@@ -93,10 +92,6 @@ public class ClassLogBean {
 
     public int getNotLogger() {
         return notLogger;
-    }
-
-    public play.Logger.ALogger getPlayLogger() {
-        return playLogger;
     }
 
 }

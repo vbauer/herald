@@ -25,7 +25,6 @@ public class LogFactoryTest extends BasicTest {
         checkLogFactory(new CommonsLogFactory(), LOG_NAME, org.apache.commons.logging.Log.class);
         checkLogFactory(new JBossLogFactory(), LOG_NAME, org.jboss.logging.Logger.class);
         checkLogFactory(new FluentLogFactory(), LOG_NAME, org.fluentd.logger.FluentLogger.class);
-        checkLogFactory(new PlayLogFactory(), LOG_NAME, play.Logger.ALogger.class);
         checkLogFactory(
             new Syslog4jLogFactory(),
             Syslog4jLogFactory.DEFAULT_PROTOCOL,

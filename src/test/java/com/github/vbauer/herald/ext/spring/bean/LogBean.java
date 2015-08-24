@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
+@SuppressWarnings("all")
 public class LogBean {
 
     @Log
@@ -45,9 +46,6 @@ public class LogBean {
 
     @Log
     private org.fluentd.logger.FluentLogger fluentLogger;
-
-    @Log
-    private play.Logger.ALogger playLogger;
 
 
     public static java.util.logging.Logger getStaticJavaUtilLogger() {
@@ -96,10 +94,6 @@ public class LogBean {
 
     public org.fluentd.logger.FluentLogger getFluentLogger() {
         return fluentLogger;
-    }
-
-    public play.Logger.ALogger getPlayLogger() {
-        return playLogger;
     }
 
 }

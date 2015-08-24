@@ -26,7 +26,11 @@ public abstract class SimpleLogFactory implements LogFactory {
 
     @Override
     public boolean isCompatible(final Class<?> loggerClass) {
-        return ReflectionUtils.isAssignableFrom(loggerClassName, loggerClass);
+        try {
+            return ReflectionUtils.isAssignableFrom(loggerClassName, loggerClass);
+        } catch (final UnsupportedClassVersionError ex) {
+            return false;
+        }
     }
 
     @Override
