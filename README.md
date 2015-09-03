@@ -194,6 +194,7 @@ Use `@Log(required = false)` to make your logger object optional (it could be us
 
 ## Might also like
 
+* [jconditions](https://github.com/vbauer/jconditions) - Extra conditional annotations for JUnit.
 * [jackdaw](https://github.com/vbauer/jackdaw) - Java Annotation Processor which allows to simplify development.
 * [houdini](https://github.com/vbauer/houdini) - Type conversion system for Java projects.
 * [caesar](https://github.com/vbauer/caesar) - Library that allows to create async beans from sync beans.
