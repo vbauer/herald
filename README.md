@@ -1,5 +1,11 @@
 
-# Herald [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Herald-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/2042) [![Build Status](https://travis-ci.org/vbauer/herald.svg)](https://travis-ci.org/vbauer/herald) [![Coverage Status](https://coveralls.io/repos/vbauer/herald/badge.svg?branch=master)](https://coveralls.io/r/vbauer/herald?branch=master) [![Maven](https://img.shields.io/github/tag/vbauer/herald.svg?label=maven)](https://jitpack.io/#vbauer/herald)
+# Herald
+
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Herald-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/2042)
+[![Build Status](https://travis-ci.org/vbauer/herald.svg)](https://travis-ci.org/vbauer/herald)
+[![Coverage Status](https://coveralls.io/repos/vbauer/herald/badge.svg?branch=master)](https://coveralls.io/r/vbauer/herald?branch=master)
+[![Dependency Status](https://www.versioneye.com/user/projects/563d05224d415e001e0000ef/badge.svg?style=flat)](https://www.versioneye.com/user/projects/563d05224d415e001e0000ef)
+[![Maven](https://img.shields.io/github/tag/vbauer/herald.svg?label=maven)](https://jitpack.io/#vbauer/herald)
 
 <img align="right" style="margin-left: 15px" width="280" height="400" src="misc/white-rabbit.png">
 
