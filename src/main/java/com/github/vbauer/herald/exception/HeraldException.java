@@ -4,6 +4,7 @@ package com.github.vbauer.herald.exception;
  * @author Vladislav Bauer
  */
 
+@SuppressWarnings("serial")
 public abstract class HeraldException extends RuntimeException {
 
     public String getMessage() {

@@ -49,7 +49,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.6</java.version>
+        <java.version>1.7</java.version>
 
         <spring.version>4.2.3.RELEASE</spring.version>
         <guice.version>4.0</guice.version>
