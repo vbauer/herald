@@ -22,7 +22,7 @@ public final class LoggerInjector {
 
 
     public static Collection<Object> inject(final Object... beans) {
-        final List<Object> result = new ArrayList<Object>();
+        final List<Object> result = new ArrayList<>();
 
         if (!CollectionUtils.isEmpty(beans)) {
             for (final Object bean : beans) {

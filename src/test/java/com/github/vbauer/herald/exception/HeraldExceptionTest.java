@@ -22,8 +22,8 @@ public class HeraldExceptionTest extends BasicTest {
 
         try {
             throw new HeraldException() {
-				private static final long serialVersionUID = 1L;
-			};
+                private static final long serialVersionUID = 1L;
+            };
         } catch (final HeraldException ex) {
             checkMessage(ex);
         }
