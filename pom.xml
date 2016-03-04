@@ -57,10 +57,10 @@
         <junit.version>4.12</junit.version>
         <jconditions.version>1.2.0</jconditions.version>
         <commons.logging.version>1.2</commons.logging.version>
-        <logback.version>1.1.5</logback.version>
+        <logback.version>1.1.6</logback.version>
         <log4j.version>1.2.17</log4j.version>
         <log4j2.version>2.5</log4j2.version>
-        <slf4j.version>1.7.16</slf4j.version>
+        <slf4j.version>1.7.18</slf4j.version>
         <jboss.logging.version>3.3.0.Final</jboss.logging.version>
         <syslog4j.version>0.9.30</syslog4j.version>
         <syslog4j.graylog.version>0.9.54</syslog4j.graylog.version>
@@ -72,7 +72,7 @@
         <maven.surefire.plugin.version>2.19.1</maven.surefire.plugin.version>
         <maven.checkstyle.plugin.version>2.17</maven.checkstyle.plugin.version>
         <maven.pmd.plugin.version>3.6</maven.pmd.plugin.version>
-        <maven.animal.sniffer.plugin.version>1.14</maven.animal.sniffer.plugin.version>
+        <maven.animal.sniffer.plugin.version>1.15</maven.animal.sniffer.plugin.version>
         <maven.jacoco.plugin.version>0.7.6.201602180812</maven.jacoco.plugin.version>
         <maven.coveralls.plugin.version>4.1.0</maven.coveralls.plugin.version>
         <maven.serviceloader.plugin.version>1.0.7</maven.serviceloader.plugin.version>
