@@ -21,7 +21,9 @@ public class HeraldExceptionTest extends BasicTest {
         Assert.assertTrue(Modifier.isPublic(modifiers));
 
         try {
-            throw new HeraldException() {};
+            throw new HeraldException() {
+                private static final long serialVersionUID = 1L;
+            };
         } catch (final HeraldException ex) {
             checkMessage(ex);
         }

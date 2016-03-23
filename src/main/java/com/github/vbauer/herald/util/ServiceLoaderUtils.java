@@ -17,7 +17,7 @@ public final class ServiceLoaderUtils {
         final ServiceLoader<T> serviceLoader = ServiceLoader.load(beanClass);
         final Iterator<T> iterator = serviceLoader.iterator();
 
-        final List<T> result = new ArrayList<T>();
+        final List<T> result = new ArrayList<>();
         while (iterator.hasNext()) {
             result.add(iterator.next());
         }
