@@ -57,10 +57,10 @@
         <junit.version>4.12</junit.version>
         <jconditions.version>1.2.0</jconditions.version>
         <commons.logging.version>1.2</commons.logging.version>
-        <logback.version>1.1.6</logback.version>
+        <logback.version>1.1.7</logback.version>
         <log4j.version>1.2.17</log4j.version>
         <log4j2.version>2.5</log4j2.version>
-        <slf4j.version>1.7.19</slf4j.version>
+        <slf4j.version>1.7.20</slf4j.version>
         <jboss.logging.version>3.3.0.Final</jboss.logging.version>
         <syslog4j.version>0.9.30</syslog4j.version>
         <syslog4j.graylog.version>0.9.54</syslog4j.graylog.version>
