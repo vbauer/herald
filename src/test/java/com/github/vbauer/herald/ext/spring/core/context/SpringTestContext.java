@@ -1,4 +1,4 @@
-package com.github.vbauer.herald.ext.spring.core;
+package com.github.vbauer.herald.ext.spring.core.context;
 
 import com.github.vbauer.herald.ext.spring.LogBeanPostProcessor;
 import org.springframework.context.annotation.Bean;
@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan(basePackages = "com.github.vbauer.herald")
-public class TestContext {
+public class SpringTestContext {
 
     @Bean
     public LogBeanPostProcessor logBeanPostProcessor() {

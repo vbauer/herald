@@ -6,9 +6,9 @@ import com.github.vbauer.herald.ext.spring.bean.LogBean;
 import com.github.vbauer.herald.ext.spring.bean.NamedLogBean;
 import com.github.vbauer.herald.core.BasicTest;
 import com.github.vbauer.herald.exception.MissedLogFactoryException;
-import com.github.vbauer.herald.logger.ClassLogBeanTest;
-import com.github.vbauer.herald.logger.LogBeanTest;
-import com.github.vbauer.herald.logger.NamedLogBeanTest;
+import com.github.vbauer.herald.logger.bean.ClassLogBeanTest;
+import com.github.vbauer.herald.logger.bean.LogBeanTest;
+import com.github.vbauer.herald.logger.bean.NamedLogBeanTest;
 import org.junit.Assert;
 import org.junit.Test;
 

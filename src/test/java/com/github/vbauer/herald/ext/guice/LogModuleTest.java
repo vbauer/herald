@@ -4,9 +4,9 @@ import com.github.vbauer.herald.core.BasicTest;
 import com.github.vbauer.herald.ext.spring.bean.ClassLogBean;
 import com.github.vbauer.herald.ext.spring.bean.LogBean;
 import com.github.vbauer.herald.ext.spring.bean.NamedLogBean;
-import com.github.vbauer.herald.logger.ClassLogBeanTest;
-import com.github.vbauer.herald.logger.LogBeanTest;
-import com.github.vbauer.herald.logger.NamedLogBeanTest;
+import com.github.vbauer.herald.logger.bean.ClassLogBeanTest;
+import com.github.vbauer.herald.logger.bean.LogBeanTest;
+import com.github.vbauer.herald.logger.bean.NamedLogBeanTest;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import org.junit.Test;
@@ -23,13 +23,13 @@ public class LogModuleTest extends BasicTest {
     }
 
     @Test
-    public void testNamedLogBean() {
-        NamedLogBeanTest.check(initAndGetBean(NamedLogBean.class));
+    public void testLogBean() {
+        LogBeanTest.check(initAndGetBean(LogBean.class));
     }
 
     @Test
-    public void testLogBean() {
-        LogBeanTest.check(initAndGetBean(LogBean.class));
+    public void testNamedLogBean() {
+        NamedLogBeanTest.check(initAndGetBean(NamedLogBean.class));
     }
 
 

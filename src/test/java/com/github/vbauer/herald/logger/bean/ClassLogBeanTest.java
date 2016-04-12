@@ -1,6 +1,6 @@
-package com.github.vbauer.herald.logger;
+package com.github.vbauer.herald.logger.bean;
 
-import com.github.vbauer.herald.ext.spring.bean.LogBean;
+import com.github.vbauer.herald.ext.spring.bean.ClassLogBean;
 import com.github.vbauer.herald.ext.spring.core.BasicSpringTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,20 +10,20 @@ import org.springframework.util.Assert;
  * @author Vladislav Bauer
  */
 
-public class LogBeanTest extends BasicSpringTest {
+public class ClassLogBeanTest extends BasicSpringTest {
 
     @Autowired
-    private LogBean logBean;
+    private ClassLogBean classLogBean;
 
 
     @Test
-    public void testLogBean() {
-        check(logBean);
+    public void testClassLogBean() {
+        check(classLogBean);
     }
 
 
-    public static void check(final LogBean bean) {
-        Assert.notNull(LogBean.getStaticJavaUtilLogger());
+    public static void check(final ClassLogBean bean) {
+        Assert.notNull(ClassLogBean.getStaticJavaUtilLogger());
         Assert.notNull(bean.getJavaUtilLogger());
         Assert.notNull(bean.getCommonsLoggingLogger());
         Assert.notNull(bean.getLogbackLogger());
@@ -35,6 +35,7 @@ public class LogBeanTest extends BasicSpringTest {
         Assert.notNull(bean.getSyslog4jLogger());
         Assert.notNull(bean.getSyslog4jGraylogLogger());
         Assert.notNull(bean.getFluentLogger());
+        Assert.isTrue(bean.getNotLogger() == ClassLogBean.DEF_NOT_LOGGER_VALUE);
     }
 
 }
