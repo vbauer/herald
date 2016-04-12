@@ -36,6 +36,7 @@ private Logger logger;
 * Compatible with:
     * Pure Java SE
     * [Spring Framework](https://spring.io)
+        * [Spring Boot](http://projects.spring.io/spring-boot/)
     * [Guice](https://github.com/google/guice)
     * [RoboGuice](https://github.com/roboguice/roboguice)
     * [Android Platform](http://developer.android.com)
@@ -165,6 +166,14 @@ public class AppContext {
 
 </beans>
 ```
+
+#### Spring Boot support
+
+Herald has out of the box integration with Spring Boot. You do not need to define `LogBeanPostProcessor` in your application context.
+Spring Boot [auto-configuration](https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-auto-configuration.html) attempts to automatically configure your Spring application based on the jar dependencies that you have added.
+
+See [LogAutoConfiguration](src/main/java/com/github/vbauer/herald/ext/spring/LogAutoConfiguration.java) for more details.
+
 
 ## @Log annotation
 
