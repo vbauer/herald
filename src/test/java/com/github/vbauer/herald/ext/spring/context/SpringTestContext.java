@@ -1,4 +1,4 @@
-package com.github.vbauer.herald.ext.spring.core.context;
+package com.github.vbauer.herald.ext.spring.context;
 
 import com.github.vbauer.herald.ext.spring.LogBeanPostProcessor;
 import org.springframework.context.annotation.Bean;

@@ -2,7 +2,7 @@ package com.github.vbauer.herald.ext.spring;
 
 import com.github.vbauer.herald.core.BasicTest;
 import com.github.vbauer.herald.ext.spring.bean.CheckerBean;
-import com.github.vbauer.herald.ext.spring.core.context.SpringBootTestContext;
+import com.github.vbauer.herald.ext.spring.context.SpringBootTestContext;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
