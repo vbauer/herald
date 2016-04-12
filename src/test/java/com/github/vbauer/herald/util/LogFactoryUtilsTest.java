@@ -2,10 +2,13 @@ package com.github.vbauer.herald.util;
 
 import com.github.vbauer.herald.core.BasicTest;
 import com.github.vbauer.herald.logger.LogFactory;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Collections;
+
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.nullValue;
+import static org.junit.Assert.assertThat;
 
 /**
  * @author Vladislav Bauer
@@ -20,16 +23,16 @@ public class LogFactoryUtilsTest extends BasicTest {
 
     @Test
     public void testFindCompatible() {
-        Assert.assertNull(LogFactoryUtils.findCompatible(null, null));
-        Assert.assertNull(LogFactoryUtils.findCompatible(Collections.<LogFactory>emptyList(), null));
-        Assert.assertNull(LogFactoryUtils.findCompatible(Collections.<LogFactory>emptyList(), Object.class));
+        assertThat(LogFactoryUtils.findCompatible(null, null), nullValue());
+        assertThat(LogFactoryUtils.findCompatible(Collections.<LogFactory>emptyList(), null), nullValue());
+        assertThat(LogFactoryUtils.findCompatible(Collections.<LogFactory>emptyList(), Object.class), nullValue());
     }
 
     @Test
     public void testHasCompatible() {
-        Assert.assertFalse(LogFactoryUtils.hasCompatible(null, null));
-        Assert.assertFalse(LogFactoryUtils.hasCompatible(Collections.<LogFactory>emptyList(), null));
-        Assert.assertFalse(LogFactoryUtils.hasCompatible(Collections.<LogFactory>emptyList(), Object.class));
+        assertThat(LogFactoryUtils.hasCompatible(null, null), equalTo(false));
+        assertThat(LogFactoryUtils.hasCompatible(Collections.<LogFactory>emptyList(), null), equalTo(false));
+        assertThat(LogFactoryUtils.hasCompatible(Collections.<LogFactory>emptyList(), Object.class), equalTo(false));
     }
 
 }

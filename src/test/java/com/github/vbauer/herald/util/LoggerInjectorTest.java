@@ -1,16 +1,19 @@
 package com.github.vbauer.herald.util;
 
+import com.github.vbauer.herald.core.BasicTest;
+import com.github.vbauer.herald.exception.MissedLogFactoryException;
+import com.github.vbauer.herald.ext.spring.bean.CheckerBean;
 import com.github.vbauer.herald.ext.spring.bean.ClassLogBean;
 import com.github.vbauer.herald.ext.spring.bean.IncorrectLogBean;
 import com.github.vbauer.herald.ext.spring.bean.LogBean;
 import com.github.vbauer.herald.ext.spring.bean.NamedLogBean;
-import com.github.vbauer.herald.core.BasicTest;
-import com.github.vbauer.herald.exception.MissedLogFactoryException;
-import com.github.vbauer.herald.logger.checker.ClassLogBeanChecker;
-import com.github.vbauer.herald.logger.checker.LogBeanChecker;
-import com.github.vbauer.herald.logger.checker.NamedLogBeanChecker;
 import org.junit.Assert;
 import org.junit.Test;
+
+import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.Assert.assertThat;
 
 /**
  * @author Vadislav Bauer
@@ -31,12 +34,16 @@ public class LoggerInjectorTest extends BasicTest {
     @Test
     public void testSynthetic() {
         final IncorrectLogBean bean = new IncorrectLogBean();
-        Assert.assertNotNull(LoggerInjector.inject(bean.new SyntheticTestClass()));
+        final IncorrectLogBean.SyntheticTestClass syntheticBean = bean.new SyntheticTestClass();
+
+        assertThat(LoggerInjector.inject(syntheticBean), notNullValue());
     }
 
     @Test
     public void testNoOneLogger() {
-        Assert.assertNotNull(LoggerInjector.inject(new IncorrectLogBean.EmptyTestClass()));
+        final IncorrectLogBean.EmptyTestClass bean = new IncorrectLogBean.EmptyTestClass();
+
+        assertThat(LoggerInjector.inject(bean), notNullValue());
     }
 
     @Test
@@ -45,16 +52,15 @@ public class LoggerInjectorTest extends BasicTest {
         final LogBean logBean = new LogBean();
         final NamedLogBean namedLogBean = new NamedLogBean();
 
-        Assert.assertEquals(3, LoggerInjector.inject(classLogBean, logBean, namedLogBean).size());
+        assertThat(LoggerInjector.inject(classLogBean, logBean, namedLogBean), hasSize(3));
 
-        ClassLogBeanChecker.check(classLogBean);
-        LogBeanChecker.check(logBean);
-        NamedLogBeanChecker.check(namedLogBean);
+        final CheckerBean checkerBean = new CheckerBean(classLogBean, logBean, namedLogBean);
+        checkerBean.checkBeans();
     }
 
     @Test
     public void testZeroBeans() {
-        Assert.assertTrue(LoggerInjector.inject().isEmpty());
+        assertThat(LoggerInjector.inject(), empty());
     }
 
 }

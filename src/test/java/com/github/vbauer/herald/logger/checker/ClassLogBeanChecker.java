@@ -1,7 +1,10 @@
 package com.github.vbauer.herald.logger.checker;
 
 import com.github.vbauer.herald.ext.spring.bean.ClassLogBean;
-import org.springframework.util.Assert;
+
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.Assert.assertThat;
 
 /**
  * @author Vladislav Bauer
@@ -15,19 +18,19 @@ public final class ClassLogBeanChecker {
 
 
     public static void check(final ClassLogBean bean) {
-        Assert.notNull(ClassLogBean.getStaticJavaUtilLogger());
-        Assert.notNull(bean.getJavaUtilLogger());
-        Assert.notNull(bean.getCommonsLoggingLogger());
-        Assert.notNull(bean.getLogbackLogger());
-        Assert.notNull(bean.getSlf4jLogger());
-        Assert.notNull(bean.getSlf4jExtLogger());
-        Assert.notNull(bean.getLog4jLogger());
-        Assert.notNull(bean.getLog4j2Logger());
-        Assert.notNull(bean.getJBossLogger());
-        Assert.notNull(bean.getSyslog4jLogger());
-        Assert.notNull(bean.getSyslog4jGraylogLogger());
-        Assert.notNull(bean.getFluentLogger());
-        Assert.isTrue(bean.getNotLogger() == ClassLogBean.DEF_NOT_LOGGER_VALUE);
+        assertThat(ClassLogBean.getStaticJavaUtilLogger(), notNullValue());
+        assertThat(bean.getJavaUtilLogger(), notNullValue());
+        assertThat(bean.getCommonsLoggingLogger(), notNullValue());
+        assertThat(bean.getLogbackLogger(), notNullValue());
+        assertThat(bean.getSlf4jLogger(), notNullValue());
+        assertThat(bean.getSlf4jExtLogger(), notNullValue());
+        assertThat(bean.getLog4jLogger(), notNullValue());
+        assertThat(bean.getLog4j2Logger(), notNullValue());
+        assertThat(bean.getJBossLogger(), notNullValue());
+        assertThat(bean.getSyslog4jLogger(), notNullValue());
+        assertThat(bean.getSyslog4jGraylogLogger(), notNullValue());
+        assertThat(bean.getFluentLogger(), notNullValue());
+        assertThat(bean.getNotLogger(), equalTo(ClassLogBean.DEF_NOT_LOGGER_VALUE));
     }
 
 }

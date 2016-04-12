@@ -1,11 +1,13 @@
 package com.github.vbauer.herald.util;
 
 import com.github.vbauer.herald.core.BasicTest;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Collection;
 import java.util.Collections;
+
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertThat;
 
 /**
  * @author Vladislav Bauer
@@ -20,35 +22,35 @@ public class CollectionUtilsTest extends BasicTest {
 
     @Test
     public void testSizeArray() {
-        Assert.assertEquals(0, CollectionUtils.size((Object[]) null));
-        Assert.assertEquals(0, CollectionUtils.size());
-        Assert.assertEquals(1, CollectionUtils.size(1));
+        assertThat(CollectionUtils.size((Object[]) null), equalTo(0));
+        assertThat(CollectionUtils.size(), equalTo(0));
+        assertThat(CollectionUtils.size(1), equalTo(1));
     }
 
     @Test
     public void testSizeCollection() {
-        Assert.assertEquals(0, CollectionUtils.size((Collection<?>) null));
-        Assert.assertEquals(0, CollectionUtils.size(Collections.emptyList()));
-        Assert.assertEquals(0, CollectionUtils.size(Collections.emptySet()));
-        Assert.assertEquals(1, CollectionUtils.size(Collections.singleton(1)));
-        Assert.assertEquals(1, CollectionUtils.size(Collections.singletonList(1)));
+        assertThat(CollectionUtils.size((Collection<?>) null), equalTo(0));
+        assertThat(CollectionUtils.size(Collections.emptyList()), equalTo(0));
+        assertThat(CollectionUtils.size(Collections.emptySet()), equalTo(0));
+        assertThat(CollectionUtils.size(Collections.singleton(1)), equalTo(1));
+        assertThat(CollectionUtils.size(Collections.singletonList(1)), equalTo(1));
     }
 
     @Test
     public void testIsEmptyArray() {
-        Assert.assertTrue(CollectionUtils.isEmpty((Object[]) null));
-        Assert.assertTrue(CollectionUtils.isEmpty());
-        Assert.assertFalse(CollectionUtils.isEmpty(new Object()));
-        Assert.assertFalse(CollectionUtils.isEmpty(new Object(), new Object()));
+        assertThat(CollectionUtils.isEmpty((Object[]) null), equalTo(true));
+        assertThat(CollectionUtils.isEmpty(), equalTo(true));
+        assertThat(CollectionUtils.isEmpty(new Object()), equalTo(false));
+        assertThat(CollectionUtils.isEmpty(new Object(), new Object()), equalTo(false));
     }
 
     @Test
     public void testIsEmptyCollection() {
-        Assert.assertTrue(CollectionUtils.isEmpty((Collection<?>) null));
-        Assert.assertTrue(CollectionUtils.isEmpty(Collections.emptyList()));
-        Assert.assertTrue(CollectionUtils.isEmpty(Collections.emptySet()));
-        Assert.assertFalse(CollectionUtils.isEmpty(Collections.singleton(1)));
-        Assert.assertFalse(CollectionUtils.isEmpty(Collections.singletonList(1)));
+        assertThat(CollectionUtils.isEmpty((Collection<?>) null), equalTo(true));
+        assertThat(CollectionUtils.isEmpty(Collections.emptyList()), equalTo(true));
+        assertThat(CollectionUtils.isEmpty(Collections.emptySet()), equalTo(true));
+        assertThat(CollectionUtils.isEmpty(Collections.singleton(1)), equalTo(false));
+        assertThat(CollectionUtils.isEmpty(Collections.singletonList(1)), equalTo(false));
     }
 
 }

@@ -23,7 +23,8 @@ public class SpringTest extends BasicTest {
 
     @Test
     public void testAll() {
-        checkerBean.check();
+        checkerBean.checkBeans();
+        checkerBean.checkPostProcessor();
     }
 
 }

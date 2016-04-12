@@ -56,7 +56,9 @@
         <guice.version>4.0</guice.version>
 
         <junit.version>4.12</junit.version>
-        <jconditions.version>1.2.0</jconditions.version>
+        <hamcrest.version>1.3</hamcrest.version>
+        <checker.version>1.2.0</checker.version>
+
         <commons.logging.version>1.2</commons.logging.version>
         <logback.version>1.1.7</logback.version>
         <log4j.version>1.2.17</log4j.version>
@@ -114,9 +116,23 @@
         </dependency>
 
         <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-all</artifactId>
+            <version>${hamcrest.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
             <version>${commons.logging.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.pushtorefresh.java-private-constructor-checker</groupId>
+            <artifactId>checker</artifactId>
+            <version>${checker.version}</version>
             <scope>test</scope>
         </dependency>
 

@@ -1,11 +1,8 @@
 package com.github.vbauer.herald.core;
 
-import org.junit.Assert;
+import com.pushtorefresh.private_constructor_checker.PrivateConstructorChecker;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
-
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 
 /**
  * @author Vladislav Bauer
@@ -15,19 +12,10 @@ import java.lang.reflect.InvocationTargetException;
 public abstract class BasicTest {
 
     protected final void checkUtilConstructorContract(final Class<?> utilClass) throws Exception {
-        try {
-            Assert.fail(utilClass.newInstance().toString());
-        } catch (final IllegalAccessException ex) {
-            final Constructor<?> constructor = utilClass.getDeclaredConstructor();
-            constructor.setAccessible(true);
-
-            try {
-                Assert.fail(constructor.newInstance().toString());
-            } catch (final InvocationTargetException e) {
-                final Throwable targetException = e.getTargetException();
-                Assert.assertEquals(UnsupportedOperationException.class, targetException.getClass());
-            }
-        }
+        PrivateConstructorChecker
+            .forClass(utilClass)
+            .expectedTypeOfException(UnsupportedOperationException.class)
+            .check();
     }
 
 }

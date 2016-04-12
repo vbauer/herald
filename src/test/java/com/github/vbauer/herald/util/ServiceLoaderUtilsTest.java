@@ -2,10 +2,12 @@ package com.github.vbauer.herald.util;
 
 import com.github.vbauer.herald.core.BasicTest;
 import com.github.vbauer.herald.logger.LogFactory;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Collection;
+
+import static org.hamcrest.Matchers.hasSize;
+import static org.junit.Assert.assertThat;
 
 /**
  * @author Vladislav Bauer
@@ -24,7 +26,7 @@ public class ServiceLoaderUtilsTest extends BasicTest {
     @Test
     public void testLoad() throws Exception {
         final Collection<LogFactory> factories = ServiceLoaderUtils.load(LogFactory.class);
-        Assert.assertEquals(LOGGERS_COUNT, factories.size());
+        assertThat(factories, hasSize(LOGGERS_COUNT));
     }
 
 }

@@ -18,7 +18,7 @@ public class IncorrectLogBean {
 
 
     /**
-     * Fake class to check synthetic fields.
+     * Fake class to checkAll synthetic fields.
      *
      * @author Vladislav Bauer
      */
@@ -27,7 +27,7 @@ public class IncorrectLogBean {
     }
 
     /**
-     * Fake class to check logger injector in case of zero fields.
+     * Fake class to checkAll logger injector in case of zero fields.
      *
      * @author Vladislav Bauer
      */

@@ -1,9 +1,21 @@
 package com.github.vbauer.herald.logger;
 
 import com.github.vbauer.herald.core.BasicTest;
-import com.github.vbauer.herald.logger.impl.*;
-import org.junit.Assert;
+import com.github.vbauer.herald.logger.impl.CommonsLogFactory;
+import com.github.vbauer.herald.logger.impl.FluentLogFactory;
+import com.github.vbauer.herald.logger.impl.JBossLogFactory;
+import com.github.vbauer.herald.logger.impl.JavaUtilLogFactory;
+import com.github.vbauer.herald.logger.impl.Log4j2LogFactory;
+import com.github.vbauer.herald.logger.impl.Log4jLogFactory;
+import com.github.vbauer.herald.logger.impl.Slf4jExtLogFactory;
+import com.github.vbauer.herald.logger.impl.Slf4jLogFactory;
+import com.github.vbauer.herald.logger.impl.Syslog4jGraylogLogFactory;
+import com.github.vbauer.herald.logger.impl.Syslog4jLogFactory;
 import org.junit.Test;
+
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.Assert.assertThat;
 
 /**
  * @author Vladislav Bauer
@@ -41,10 +53,10 @@ public class LogFactoryTest extends BasicTest {
     private void checkLogFactory(
         final LogFactory logFactory, final String loggerName, final Class<?> loggerClass
     ) {
-        Assert.assertNotNull(logFactory.createLogger(getClass()));
-        Assert.assertNotNull(logFactory.createLogger(loggerName));
-        Assert.assertFalse(logFactory.isCompatible(null));
-        Assert.assertTrue(logFactory.isCompatible(loggerClass));
+        assertThat(logFactory.createLogger(getClass()), notNullValue());
+        assertThat(logFactory.createLogger(loggerName), notNullValue());
+        assertThat(logFactory.isCompatible(null), equalTo(false));
+        assertThat(logFactory.isCompatible(loggerClass), equalTo(true));
     }
     
 }

@@ -4,9 +4,12 @@ import com.github.vbauer.herald.ext.spring.LogBeanPostProcessor;
 import com.github.vbauer.herald.logger.checker.ClassLogBeanChecker;
 import com.github.vbauer.herald.logger.checker.LogBeanChecker;
 import com.github.vbauer.herald.logger.checker.NamedLogBeanChecker;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.util.Assert;
+
+import javax.inject.Inject;
+
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertThat;
 
 /**
  * @author Vladislav Bauer
@@ -15,21 +18,31 @@ import org.springframework.util.Assert;
 @Component
 public class CheckerBean {
 
-    @Autowired
+    @Inject
     private LogBeanPostProcessor logBeanPostProcessor;
 
-    @Autowired
-    private ClassLogBean classLogBean;
-
-    @Autowired
-    private LogBean logBean;
-
-    @Autowired
-    private NamedLogBean namedLogBean;
+    private final ClassLogBean classLogBean;
+    private final LogBean logBean;
+    private final NamedLogBean namedLogBean;
 
 
-    public void check() {
+    @Inject
+    public CheckerBean(
+        final ClassLogBean classLogBean,
+        final LogBean logBean,
+        final NamedLogBean namedLogBean
+    ) {
+        this.classLogBean = classLogBean;
+        this.logBean = logBean;
+        this.namedLogBean = namedLogBean;
+    }
+
+
+    public void checkBeans() {
         checkBeans(classLogBean, logBean, namedLogBean);
+    }
+
+    public void checkPostProcessor() {
         checkBeans(
             checkPostProcessor(new ClassLogBean()),
             checkPostProcessor(new LogBean()),
@@ -46,9 +59,14 @@ public class CheckerBean {
         NamedLogBeanChecker.check(namedLogBean);
     }
 
+    @SuppressWarnings("unchecked")
     private <T> T checkPostProcessor(final T bean) {
-        Assert.isTrue(bean == logBeanPostProcessor.postProcessBeforeInitialization(bean, null));
-        Assert.isTrue(bean == logBeanPostProcessor.postProcessAfterInitialization(bean, null));
+        final T before = (T) logBeanPostProcessor.postProcessBeforeInitialization(bean, null);
+        assertThat(before, equalTo(bean));
+
+        final T after = (T) logBeanPostProcessor.postProcessAfterInitialization(bean, null);
+        assertThat(after, equalTo(bean));
+
         return bean;
     }
 

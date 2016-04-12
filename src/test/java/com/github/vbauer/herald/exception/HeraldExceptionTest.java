@@ -2,11 +2,14 @@ package com.github.vbauer.herald.exception;
 
 import com.github.vbauer.herald.core.BasicTest;
 import com.github.vbauer.herald.logger.impl.JavaUtilLogFactory;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.lang.reflect.Modifier;
 import java.util.logging.Logger;
+
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.Assert.assertThat;
 
 /**
  * @author Vladislav Bauer
@@ -17,8 +20,8 @@ public class HeraldExceptionTest extends BasicTest {
     @Test
     public void testHeraldException() {
         final int modifiers = HeraldException.class.getModifiers();
-        Assert.assertTrue(Modifier.isAbstract(modifiers));
-        Assert.assertTrue(Modifier.isPublic(modifiers));
+        assertThat(Modifier.isAbstract(modifiers), equalTo(true));
+        assertThat(Modifier.isPublic(modifiers), equalTo(true));
 
         try {
             throw new HeraldException() {
@@ -35,7 +38,7 @@ public class HeraldExceptionTest extends BasicTest {
         try {
             throw new MissedLogFactoryException(loggerClass);
         } catch (final MissedLogFactoryException ex) {
-            Assert.assertTrue(loggerClass.isAssignableFrom(ex.getLoggerClass()));
+            assertThat(loggerClass.isAssignableFrom(ex.getLoggerClass()), equalTo(true));
             checkMessage(ex);
         }
     }
@@ -46,15 +49,15 @@ public class HeraldExceptionTest extends BasicTest {
         try {
             throw new LoggerInstantiationException(logFactory);
         } catch (final LoggerInstantiationException ex) {
-            Assert.assertEquals(logFactory, ex.getLoggerFactory());
+            assertThat(logFactory, equalTo(ex.getLoggerFactory()));
             checkMessage(ex);
         }
     }
 
 
     private void checkMessage(final HeraldException ex) {
-        Assert.assertNotNull(ex.getLocalizedMessage());
-        Assert.assertNotNull(ex.getMessage());
+        assertThat(ex.getLocalizedMessage(), notNullValue());
+        assertThat(ex.getMessage(), notNullValue());
     }
 
 }
