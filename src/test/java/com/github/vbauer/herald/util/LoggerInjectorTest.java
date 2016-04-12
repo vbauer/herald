@@ -6,9 +6,9 @@ import com.github.vbauer.herald.ext.spring.bean.LogBean;
 import com.github.vbauer.herald.ext.spring.bean.NamedLogBean;
 import com.github.vbauer.herald.core.BasicTest;
 import com.github.vbauer.herald.exception.MissedLogFactoryException;
-import com.github.vbauer.herald.logger.bean.ClassLogBeanTest;
-import com.github.vbauer.herald.logger.bean.LogBeanTest;
-import com.github.vbauer.herald.logger.bean.NamedLogBeanTest;
+import com.github.vbauer.herald.logger.checker.ClassLogBeanChecker;
+import com.github.vbauer.herald.logger.checker.LogBeanChecker;
+import com.github.vbauer.herald.logger.checker.NamedLogBeanChecker;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -47,9 +47,9 @@ public class LoggerInjectorTest extends BasicTest {
 
         Assert.assertEquals(3, LoggerInjector.inject(classLogBean, logBean, namedLogBean).size());
 
-        ClassLogBeanTest.check(classLogBean);
-        LogBeanTest.check(logBean);
-        NamedLogBeanTest.check(namedLogBean);
+        ClassLogBeanChecker.check(classLogBean);
+        LogBeanChecker.check(logBean);
+        NamedLogBeanChecker.check(namedLogBean);
     }
 
     @Test

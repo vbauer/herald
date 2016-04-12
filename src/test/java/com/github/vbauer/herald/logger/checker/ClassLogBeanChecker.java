@@ -1,24 +1,16 @@
-package com.github.vbauer.herald.logger.bean;
+package com.github.vbauer.herald.logger.checker;
 
 import com.github.vbauer.herald.ext.spring.bean.ClassLogBean;
-import com.github.vbauer.herald.ext.spring.core.BasicSpringTest;
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
 /**
  * @author Vladislav Bauer
  */
 
-public class ClassLogBeanTest extends BasicSpringTest {
+public final class ClassLogBeanChecker {
 
-    @Autowired
-    private ClassLogBean classLogBean;
-
-
-    @Test
-    public void testClassLogBean() {
-        check(classLogBean);
+    private ClassLogBeanChecker() {
+        throw new UnsupportedOperationException();
     }
 
 

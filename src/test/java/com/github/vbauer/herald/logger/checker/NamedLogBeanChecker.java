@@ -1,29 +1,21 @@
-package com.github.vbauer.herald.logger.bean;
+package com.github.vbauer.herald.logger.checker;
 
-import com.github.vbauer.herald.ext.spring.bean.LogBean;
-import com.github.vbauer.herald.ext.spring.core.BasicSpringTest;
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.github.vbauer.herald.ext.spring.bean.NamedLogBean;
 import org.springframework.util.Assert;
 
 /**
  * @author Vladislav Bauer
  */
 
-public class LogBeanTest extends BasicSpringTest {
+public class NamedLogBeanChecker {
 
-    @Autowired
-    private LogBean logBean;
-
-
-    @Test
-    public void testLogBean() {
-        check(logBean);
+    private NamedLogBeanChecker() {
+        throw new UnsupportedOperationException();
     }
 
 
-    public static void check(final LogBean bean) {
-        Assert.notNull(LogBean.getStaticJavaUtilLogger());
+    public static void check(final NamedLogBean bean) {
+        Assert.notNull(NamedLogBean.getStaticJavaUtilLogger());
         Assert.notNull(bean.getJavaUtilLogger());
         Assert.notNull(bean.getCommonsLoggingLogger());
         Assert.notNull(bean.getLogbackLogger());
