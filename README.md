@@ -6,6 +6,7 @@
 [![Coverage Status](https://coveralls.io/repos/vbauer/herald/badge.svg?branch=master)](https://coveralls.io/r/vbauer/herald?branch=master)
 [![Dependency Status](https://www.versioneye.com/user/projects/563d05224d415e001e0000ef/badge.svg?style=flat)](https://www.versioneye.com/user/projects/563d05224d415e001e0000ef)
 [![Maven](https://img.shields.io/github/tag/vbauer/herald.svg?label=maven)](https://jitpack.io/#vbauer/herald)
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/10aa5200922f4850a3ea21e8fe81ecd9)](https://www.codacy.com/app/bauer-vlad/herald)
 
 <img align="right" style="margin-left: 15px" width="280" height="400" src="misc/white-rabbit.png">
 
