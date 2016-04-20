@@ -1,14 +1,25 @@
 language: java
+
 script: mvn clean package -P strict
+
 after_success:
   - mvn jacoco:report coveralls:report
+  - bash ./deploy.sh
+
 jdk:
   - oraclejdk7
   - oraclejdk8
+
 branches:
   only:
   - master
+
 sudo: false
 cache:
   directories:
     - $HOME/.m2
+
+env:
+  global:
+  - GH_REF: github.com/vbauer/herald.git
+  - secure: "DZWksxGbfxAgSBfq5ecKuPtwdpG8d5Lav5UuaMq8N/IeW+pIzvJOjHBn1FiMO6xQZaEfaoKJCWPQs2kNymhC4Pgl+Ni8mipNf3GsCKlRq87jsBDV7FChI3kTSPo7b+JFeCA8fUVlemN/T3eyEY6lyU/5RwG2r4vAtsAE0SXMI/8="
