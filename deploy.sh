@@ -3,13 +3,11 @@
 # Exit with nonzero exit code if anything fails
 set -e
 
-# Lets work only for tags
-if [ "$TRAVIS_TAG" = "" ]
+# Lets work only for master
+if ! [ "$TRAVIS_BRANCH" = "master" ]
 then
-   echo "Not a tag, not deploying"
+   echo "Not a master, not deploying"
    exit 0
-else
-   echo "==> Building and deploying tag $TRAVIS_TAG <=="
 fi
 
 # Generate Maven site

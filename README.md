@@ -28,6 +28,13 @@ Write less code, use short form:
 private Logger logger;
 ```
 
+**Online documentation:**
+
+The last version of documentation for this project is available here:
+
+* [Maven site](https://vbauer.github.io/herald)
+* [Javadoc](https://vbauer.github.io/herald/apidocs)
+
 
 ## Main features
 
@@ -216,11 +223,6 @@ To build project in strict mode with tests, you can run:
 ```bash
 mvn -P strict clean package
 ```
-
-**Online documentation:**
-
-* [Maven site](https://vbauer.github.io/herald)
-* [Javadoc](https://vbauer.github.io/herald/apidocs)
 
 
 ## Might also like

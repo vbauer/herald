@@ -10,10 +10,6 @@ jdk:
   - oraclejdk7
   - oraclejdk8
 
-branches:
-  only:
-  - master
-
 sudo: false
 cache:
   directories:
