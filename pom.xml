@@ -8,8 +8,8 @@
     <artifactId>herald</artifactId>
     <version>1.2.0</version>
 
-    <description>Type conversion system for Spring</description>
-    <url>https://github.com/vbauer/houdini</url>
+    <description>Log annotation for logging frameworks</description>
+    <url>https://github.com/vbauer/herald</url>
     <inceptionYear>2015</inceptionYear>
 
     <licenses>
@@ -50,6 +50,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.7</java.version>
+        <github.global.server>github</github.global.server>
 
         <spring.version>4.2.5.RELEASE</spring.version>
         <spring.boot.version>1.3.3.RELEASE</spring.boot.version>
@@ -286,6 +287,23 @@
                         <goals>
                             <goal>generate</goal>
                         </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <version>0.12</version>
+                <configuration>
+                    <message>Creating site for ${project.version}</message>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>site</goal>
+                        </goals>
+                        <phase>site</phase>
                     </execution>
                 </executions>
             </plugin>
