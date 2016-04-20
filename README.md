@@ -208,6 +208,16 @@ Use `@Log(required = false)` to make your logger object optional (it could be us
     syslog.getConfig().setPort(1514);
     ```
 
+
+## Development
+
+To build project in strict mode with tests, you can run:
+
+```bash
+mvn -P strict clean package
+```
+
+
 ## Might also like
 
 * [jconditions](https://github.com/vbauer/jconditions) - Extra conditional annotations for JUnit.
