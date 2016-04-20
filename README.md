@@ -30,8 +30,6 @@ private Logger logger;
 
 **Online documentation:**
 
-The last version of documentation for this project is available here:
-
 * [Maven site](https://vbauer.github.io/herald)
 * [Javadoc](https://vbauer.github.io/herald/apidocs)
 
