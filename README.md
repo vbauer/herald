@@ -217,6 +217,11 @@ To build project in strict mode with tests, you can run:
 mvn -P strict clean package
 ```
 
+**Online documentation:**
+
+* [Maven site](https://vbauer.github.io/herald)
+* [Javadoc](https://vbauer.github.io/herald/apidocs)
+
 
 ## Might also like
 
