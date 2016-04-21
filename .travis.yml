@@ -18,4 +18,4 @@ cache:
 env:
   global:
   - GH_REF: github.com/vbauer/herald.git
-  - secure: "ay/H2CtvrjKol8rRT6eMj7dgkjOa1t8WDMY8gTiu1iXAGoAb6DusL+Xrn8I52GbifEZqQrIM9rCwvsENv83MUyJn8hbmnSBcdEtLmrCWcZynBsRCYfmAmqyT1HoLZnxUEflVSfW7UPXLxwf6Ny4ImiNg5KLLcc/HrNeplqDyLOE="
+  - secure: "DZWksxGbfxAgSBfq5ecKuPtwdpG8d5Lav5UuaMq8N/IeW+pIzvJOjHBn1FiMO6xQZaEfaoKJCWPQs2kNymhC4Pgl+Ni8mipNf3GsCKlRq87jsBDV7FChI3kTSPo7b+JFeCA8fUVlemN/T3eyEY6lyU/5RwG2r4vAtsAE0SXMI/8="
