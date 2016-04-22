@@ -1,5 +1,8 @@
 package com.github.vbauer.herald.logger.impl;
 
+import com.github.vbauer.herald.logger.LogFactory;
+import com.github.vbauer.jackdaw.annotation.JService;
+
 /**
  * <b>IMPORTANT:</b>
  * This is a repackaged fork used in Graylog2, as the original package has no recent versions
@@ -8,6 +11,8 @@ package com.github.vbauer.herald.logger.impl;
  * @author Vladislav Bauer
  */
 
+@SuppressWarnings("all")
+@JService(LogFactory.class)
 public class Syslog4jGraylogLogFactory extends SimpleLogFactory {
 
     public static final String LOGGER_CLASS_NAME = "org.graylog2.syslog4j.SyslogIF";

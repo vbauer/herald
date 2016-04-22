@@ -54,6 +54,7 @@
         <spring.version>4.2.5.RELEASE</spring.version>
         <spring.boot.version>1.3.3.RELEASE</spring.boot.version>
         <guice.version>4.0</guice.version>
+        <jackdaw.version>1.0.9</jackdaw.version>
 
         <junit.version>4.12</junit.version>
         <hamcrest.version>1.3</hamcrest.version>
@@ -83,6 +84,13 @@
         <maven.javadoc.plugin.version>2.10.3</maven.javadoc.plugin.version>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
     <dependencies>
 
         <dependency>
@@ -99,6 +107,20 @@
             <version>${guice.version}</version>
             <scope>provided</scope>
             <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.vbauer.jackdaw</groupId>
+            <artifactId>jackdaw-core</artifactId>
+            <version>${jackdaw.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.vbauer.jackdaw</groupId>
+            <artifactId>jackdaw-apt</artifactId>
+            <version>${jackdaw.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Testing -->
@@ -228,8 +250,8 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
-                    <compilerArgument>-proc:none</compilerArgument>
                     <optimize>true</optimize>
+                    <forceJavacCompilerUse>true</forceJavacCompilerUse>
                 </configuration>
             </plugin>
 
@@ -272,24 +294,6 @@
                 <groupId>org.eluder.coveralls</groupId>
                 <artifactId>coveralls-maven-plugin</artifactId>
                 <version>${maven.coveralls.plugin.version}</version>
-            </plugin>
-
-            <plugin>
-                <groupId>eu.somatik.serviceloader-maven-plugin</groupId>
-                <artifactId>serviceloader-maven-plugin</artifactId>
-                <version>${maven.serviceloader.plugin.version}</version>
-                <configuration>
-                    <services>
-                        <param>com.github.vbauer.herald.logger.LogFactory</param>
-                    </services>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
 
             <plugin>
