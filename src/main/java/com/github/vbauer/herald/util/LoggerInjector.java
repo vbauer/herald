@@ -24,7 +24,7 @@ public final class LoggerInjector {
     public static Collection<Object> inject(final Object... beans) {
         final List<Object> result = new ArrayList<>();
 
-        if (!CollectionUtils.isEmpty(beans)) {
+        if (beans != null) {
             for (final Object bean : beans) {
                 result.add(inject(bean));
             }
@@ -107,7 +107,11 @@ public final class LoggerInjector {
                 ReflectionUtils.handleReflectionException(ex);
             }
         } finally {
-            field.setAccessible(isAccessible);
+            try {
+                field.setAccessible(isAccessible);
+            } catch (final SecurityException ignored) {
+                // Ignored.
+            }
         }
     }
 

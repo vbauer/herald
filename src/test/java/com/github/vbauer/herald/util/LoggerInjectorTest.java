@@ -61,6 +61,7 @@ public class LoggerInjectorTest extends BasicTest {
     @Test
     public void testZeroBeans() {
         assertThat(LoggerInjector.inject(), empty());
+        assertThat(LoggerInjector.inject((Object[]) null), empty());
     }
 
 }

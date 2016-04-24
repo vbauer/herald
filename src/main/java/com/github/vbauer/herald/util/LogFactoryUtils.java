@@ -20,7 +20,7 @@ public final class LogFactoryUtils {
     }
 
     public static LogFactory findCompatible(final Collection<LogFactory> factories, final Class<?> loggerClass) {
-        if (!CollectionUtils.isEmpty(factories)) {
+        if (factories != null) {
             for (final LogFactory factory : factories) {
                 if (factory.isCompatible(loggerClass)) {
                     return factory;
