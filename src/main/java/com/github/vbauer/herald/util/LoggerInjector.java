@@ -1,8 +1,8 @@
 package com.github.vbauer.herald.util;
 
 import com.github.vbauer.herald.annotation.Log;
-import com.github.vbauer.herald.exception.MissedLogFactoryException;
 import com.github.vbauer.herald.exception.LoggerInstantiationException;
+import com.github.vbauer.herald.exception.MissedLogFactoryException;
 import com.github.vbauer.herald.logger.LogFactory;
 
 import java.lang.reflect.Field;
@@ -116,11 +116,7 @@ public final class LoggerInjector {
     }
 
     private static Object createLogger(final LogFactory logFactory, final String loggerName, final Class<?> beanClass) {
-        if (!loggerName.isEmpty()) {
-            return logFactory.createLogger(loggerName);
-        } else {
-            return logFactory.createLogger(beanClass);
-        }
+        return !loggerName.isEmpty() ? logFactory.createLogger(loggerName) : logFactory.createLogger(beanClass);
     }
 
 }
