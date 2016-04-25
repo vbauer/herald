@@ -9,7 +9,7 @@ import static org.junit.Assert.assertThat;
  * @author Vladislav Bauer
  */
 
-public class NamedLogBeanChecker {
+public final class NamedLogBeanChecker {
 
     private NamedLogBeanChecker() {
         throw new UnsupportedOperationException();
