@@ -15,7 +15,9 @@ import static org.junit.Assert.assertThat;
 
 public class ServiceLoaderUtilsTest extends BasicTest {
 
-    private static final int LOGGERS_COUNT = 11;
+    private static final int REAL_LOGGERS_COUNT = 11;
+    private static final int TEST_LOGGERS_COUNT = 1;
+    private static final int LOGGERS_COUNT = REAL_LOGGERS_COUNT + TEST_LOGGERS_COUNT;
 
     
     @Test

@@ -1,6 +1,8 @@
 package com.github.vbauer.herald.logger;
 
 import com.github.vbauer.herald.core.BasicTest;
+import com.github.vbauer.herald.exception.LoggerInstantiationException;
+import com.github.vbauer.herald.ext.spring.bean.NullLoggerBean;
 import com.github.vbauer.herald.logger.impl.CommonsLogFactory;
 import com.github.vbauer.herald.logger.impl.FluentLogFactory;
 import com.github.vbauer.herald.logger.impl.JBossLogFactory;
@@ -11,11 +13,13 @@ import com.github.vbauer.herald.logger.impl.Slf4jExtLogFactory;
 import com.github.vbauer.herald.logger.impl.Slf4jLogFactory;
 import com.github.vbauer.herald.logger.impl.Syslog4jGraylogLogFactory;
 import com.github.vbauer.herald.logger.impl.Syslog4jLogFactory;
+import com.github.vbauer.herald.util.LoggerInjector;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 /**
  * @author Vladislav Bauer
@@ -25,7 +29,13 @@ public class LogFactoryTest extends BasicTest {
     
     private static final String LOG_NAME = "Logger Name";
 
-    
+
+    @Test(expected = LoggerInstantiationException.class)
+    public void testWrongCustomLogFactory() {
+        final NullLoggerBean bean = new NullLoggerBean();
+        fail(LoggerInjector.inject(bean).toString());
+    }
+
     @Test
     public void testLogFactories() {
         checkLogFactory(new JavaUtilLogFactory(), LOG_NAME, java.util.logging.Logger.class);
