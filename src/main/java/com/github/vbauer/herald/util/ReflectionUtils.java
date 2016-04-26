@@ -19,7 +19,7 @@ public final class ReflectionUtils {
         try {
             final Class<?> clazz = Class.forName(className);
             return clazz.isAssignableFrom(from);
-        } catch (final Exception ex) {
+        } catch (final Throwable ex) {
             return false;
         }
     }

@@ -24,6 +24,7 @@ public class ReflectionUtilsTest extends BasicTest {
         final Class<Object> objectClass = Object.class;
         final String objectClassName = objectClass.getName();
 
+        assertThat(ReflectionUtils.isAssignableFrom("some.strange.missed.Class", objectClass), equalTo(false));
         assertThat(ReflectionUtils.isAssignableFrom(objectClassName, objectClass), equalTo(true));
         assertThat(ReflectionUtils.isAssignableFrom(null, objectClass), equalTo(false));
         assertThat(ReflectionUtils.isAssignableFrom(objectClassName, null), equalTo(false));
