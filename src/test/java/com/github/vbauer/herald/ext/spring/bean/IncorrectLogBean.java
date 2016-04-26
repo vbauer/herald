@@ -6,6 +6,7 @@ import com.github.vbauer.herald.annotation.Log;
  * @author Vladislav Bauer
  */
 
+@SuppressWarnings("all")
 public class IncorrectLogBean {
 
     private Object notLogger;
