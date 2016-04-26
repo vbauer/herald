@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.Assert.assertThat;
+
 /**
  * @author Vladislav Bauer
  */
@@ -25,6 +28,14 @@ public class SpringBootTest extends BasicTest {
     public void testAll() {
         checkerBean.checkBeans();
         checkerBean.checkPostProcessor();
+    }
+
+    @Test
+    public void testAutoConfiguration() {
+        final LogAutoConfiguration configuration = new LogAutoConfiguration();
+        final LogBeanPostProcessor processor = configuration.logBeanPostProcessor();
+
+        assertThat(processor, notNullValue());
     }
 
 }
