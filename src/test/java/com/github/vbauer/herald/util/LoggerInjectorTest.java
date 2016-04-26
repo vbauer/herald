@@ -10,8 +10,6 @@ import com.github.vbauer.herald.ext.spring.bean.NamedLogBean;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.hamcrest.Matchers.empty;
-import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
@@ -52,16 +50,12 @@ public class LoggerInjectorTest extends BasicTest {
         final LogBean logBean = new LogBean();
         final NamedLogBean namedLogBean = new NamedLogBean();
 
-        assertThat(LoggerInjector.inject(classLogBean, logBean, namedLogBean), hasSize(3));
+        LoggerInjector.inject();
+        LoggerInjector.inject((Object[]) null);
+        LoggerInjector.inject(classLogBean, logBean, namedLogBean);
 
         final CheckerBean checkerBean = new CheckerBean(classLogBean, logBean, namedLogBean);
         checkerBean.checkBeans();
-    }
-
-    @Test
-    public void testZeroBeans() {
-        assertThat(LoggerInjector.inject(), empty());
-        assertThat(LoggerInjector.inject((Object[]) null), empty());
     }
 
 }

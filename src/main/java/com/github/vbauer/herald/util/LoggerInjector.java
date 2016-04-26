@@ -6,9 +6,7 @@ import com.github.vbauer.herald.exception.MissedLogFactoryException;
 import com.github.vbauer.herald.logger.LogFactory;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 /**
  * @author Vladislav Bauer
@@ -16,31 +14,30 @@ import java.util.List;
 
 public final class LoggerInjector {
 
+    private static final Collection<LogFactory> LOG_FACTORIES =
+        ServiceLoaderUtils.load(LogFactory.class);
+
+
     private LoggerInjector() {
         throw new UnsupportedOperationException();
     }
 
 
-    public static Collection<Object> inject(final Object... beans) {
-        final List<Object> result = new ArrayList<>();
-
+    public static void inject(final Object... beans) {
         if (beans != null) {
             for (final Object bean : beans) {
-                result.add(inject(bean));
+                inject(bean);
             }
         }
-
-        return result;
     }
 
     public static <T> T inject(final T bean) {
         final Class<?> beanClass = bean.getClass();
-        final Collection<LogFactory> logFactories = ServiceLoaderUtils.load(LogFactory.class);
 
         final Field[] declaredFields = beanClass.getDeclaredFields();
         for (final Field field : declaredFields) {
-            if (needToInjectLogger(bean, field, logFactories)) {
-                injectLogger(bean, field, logFactories);
+            if (needToInjectLogger(bean, field)) {
+                injectLogger(bean, field);
             }
         }
 
@@ -52,31 +49,25 @@ public final class LoggerInjector {
      * Internal API.
      */
 
-    private static boolean needToInjectLogger(
-        final Object bean, final Field field, final Collection<LogFactory> logFactories
-    ) {
+    private static boolean needToInjectLogger(final Object bean, final Field field) {
         final boolean isSyntheticField = field.isSynthetic();
         if (!isSyntheticField) {
             final Class<?> beanClass = bean.getClass();
-            return needToInjectLogger(beanClass, logFactories, field);
+            return needToInjectLogger(beanClass, field);
         }
         return false;
     }
 
-    private static boolean needToInjectLogger(
-        final Class<?> beanClass, final Collection<LogFactory> logFactories, final Field field
-    ) {
+    private static boolean needToInjectLogger(final Class<?> beanClass, final Field field) {
         final boolean hasAnnotation = beanClass.getAnnotation(Log.class) != null;
         if (hasAnnotation) {
             final Class<?> fieldType = field.getType();
-            return LogFactoryUtils.hasCompatible(logFactories, fieldType);
+            return LogFactoryUtils.hasCompatible(LOG_FACTORIES, fieldType);
         }
         return field.getAnnotation(Log.class) != null;
     }
 
-    private static void injectLogger(
-        final Object bean, final Field field, final Collection<LogFactory> logFactories
-    ) {
+    private static void injectLogger(final Object bean, final Field field) {
         final boolean isAccessible = field.isAccessible();
         field.setAccessible(true);
 
@@ -89,18 +80,7 @@ public final class LoggerInjector {
         final String loggerName = annotation.value();
 
         try {
-            // Find corresponding logger factory.
-            final LogFactory logFactory = LogFactoryUtils.findCompatible(logFactories, loggerClass);
-            if (logFactory == null) {
-                throw new MissedLogFactoryException(loggerClass);
-            }
-
-            // Create logger
-            final Object logger = createLogger(logFactory, loggerName, beanClass);
-            if (logger == null) {
-                throw new LoggerInstantiationException(logFactory);
-            }
-
+            final Object logger = createLogger(beanClass, loggerClass, loggerName);
             field.set(bean, logger);
         } catch (final Throwable ex) {
             if (required) {
@@ -115,8 +95,29 @@ public final class LoggerInjector {
         }
     }
 
-    private static Object createLogger(final LogFactory logFactory, final String loggerName, final Class<?> beanClass) {
-        return !loggerName.isEmpty() ? logFactory.createLogger(loggerName) : logFactory.createLogger(beanClass);
+    private static Object createLogger(
+        final Class<?> beanClass, final Class<?> loggerClass, final String loggerName
+    ) {
+        // Find corresponding logger factory.
+        final LogFactory logFactory =
+            LogFactoryUtils.findCompatible(LOG_FACTORIES, loggerClass);
+
+        if (logFactory == null) {
+            throw new MissedLogFactoryException(loggerClass);
+        }
+
+        // Create logger.
+        final Object logger = createLogger(logFactory, loggerName, beanClass);
+        if (logger == null) {
+            throw new LoggerInstantiationException(logFactory);
+        }
+        return logger;
+    }
+
+    private static Object createLogger(
+        final LogFactory factory, final String name, final Class<?> beanClass
+    ) {
+        return !name.isEmpty() ? factory.createLogger(name) : factory.createLogger(beanClass);
     }
 
 }
