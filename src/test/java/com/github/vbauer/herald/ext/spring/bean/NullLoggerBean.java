@@ -6,6 +6,7 @@ import com.github.vbauer.herald.logger.empty.NullLogger;
 /**
  * @author Vladislav Bauer
  */
+
 public class NullLoggerBean {
 
     @Log

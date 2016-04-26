@@ -22,18 +22,27 @@ public abstract class SimpleLogFactory implements LogFactory {
         this.loggerFactoryClassName = loggerFactoryClassName;
         this.loggerFactoryMethod = loggerFactoryMethod;
     }
-    
 
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean isCompatible(final Class<?> loggerClass) {
         return ReflectionUtils.isAssignableFrom(loggerClassName, loggerClass);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Object createLogger(final Class<?> clazz) {
         return createLoggerObject(clazz);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Object createLogger(final String name) {
         return createLoggerObject(name);
