@@ -33,14 +33,13 @@ public final class LoggerInjector {
 
     public static <T> T inject(final T bean) {
         final Class<?> beanClass = bean.getClass();
-
         final Field[] declaredFields = beanClass.getDeclaredFields();
+
         for (final Field field : declaredFields) {
-            if (needToInjectLogger(bean, field)) {
+            if (needToInjectLogger(beanClass, field)) {
                 injectLogger(bean, field);
             }
         }
-
         return bean;
     }
 
@@ -48,15 +47,6 @@ public final class LoggerInjector {
     /*
      * Internal API.
      */
-
-    private static boolean needToInjectLogger(final Object bean, final Field field) {
-        final boolean isSyntheticField = field.isSynthetic();
-        if (!isSyntheticField) {
-            final Class<?> beanClass = bean.getClass();
-            return needToInjectLogger(beanClass, field);
-        }
-        return false;
-    }
 
     private static boolean needToInjectLogger(final Class<?> beanClass, final Field field) {
         final boolean hasAnnotation = beanClass.getAnnotation(Log.class) != null;
@@ -69,7 +59,7 @@ public final class LoggerInjector {
 
     private static void injectLogger(final Object bean, final Field field) {
         final boolean isAccessible = field.isAccessible();
-        field.setAccessible(true);
+        ReflectionUtils.setAccessible(field, true);
 
         // Read context parameters.
         final Class<?> beanClass = bean.getClass();
@@ -87,11 +77,7 @@ public final class LoggerInjector {
                 ReflectionUtils.handleReflectionException(ex);
             }
         } finally {
-            try {
-                field.setAccessible(isAccessible);
-            } catch (final SecurityException ignored) {
-                // Ignored.
-            }
+            ReflectionUtils.setAccessible(field, isAccessible);
         }
     }
 
@@ -107,17 +93,13 @@ public final class LoggerInjector {
         }
 
         // Create logger.
-        final Object logger = createLogger(logFactory, loggerName, beanClass);
+        final Object logger = !loggerName.isEmpty()
+            ? logFactory.createLogger(loggerName) : logFactory.createLogger(beanClass);
+
         if (logger == null) {
             throw new LoggerInstantiationException(logFactory);
         }
         return logger;
-    }
-
-    private static Object createLogger(
-        final LogFactory factory, final String name, final Class<?> beanClass
-    ) {
-        return !name.isEmpty() ? factory.createLogger(name) : factory.createLogger(beanClass);
     }
 
 }

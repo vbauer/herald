@@ -1,6 +1,7 @@
 package com.github.vbauer.herald.util;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -51,6 +52,14 @@ public final class ReflectionUtils {
     ) {
         final T fieldAnnotation = field.getAnnotation(annotationClass);
         return fieldAnnotation == null ? beanClass.getAnnotation(annotationClass) : fieldAnnotation;
+    }
+
+    public static void setAccessible(final AccessibleObject object, final boolean accessible) {
+        try {
+            object.setAccessible(accessible);
+        } catch (final Throwable ignored) {
+            // Ignored.
+        }
     }
 
 }

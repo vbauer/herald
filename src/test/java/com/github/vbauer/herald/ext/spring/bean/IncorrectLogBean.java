@@ -8,6 +8,8 @@ import com.github.vbauer.herald.annotation.Log;
 
 public class IncorrectLogBean {
 
+    private Object notLogger;
+
     @Log
     private Object badLogger;
 
