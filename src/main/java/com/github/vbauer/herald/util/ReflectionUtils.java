@@ -54,11 +54,13 @@ public final class ReflectionUtils {
         return fieldAnnotation == null ? beanClass.getAnnotation(annotationClass) : fieldAnnotation;
     }
 
-    public static void setAccessible(final AccessibleObject object, final boolean accessible) {
+    public static boolean setAccessible(final AccessibleObject object, final boolean accessible) {
         try {
             object.setAccessible(accessible);
+            return true;
         } catch (final Throwable ignored) {
             // Ignored.
+            return false;
         }
     }
 

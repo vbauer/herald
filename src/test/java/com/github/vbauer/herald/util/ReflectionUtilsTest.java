@@ -51,4 +51,9 @@ public class ReflectionUtilsTest extends BasicTest {
         fail(valueOf(ReflectionUtils.handleReflectionException(new Error())));
     }
 
+    @Test
+    public void testSetAccessible() {
+        assertThat(ReflectionUtils.setAccessible(null, true), equalTo(false));
+        assertThat(ReflectionUtils.setAccessible(Object.class.getConstructors()[0], true), equalTo(true));
+    }
 }
