@@ -29,6 +29,9 @@ public class LogModule extends AbstractModule {
     }
 
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void configure() {
         bindListener(typeMatcher, createTypeListener());

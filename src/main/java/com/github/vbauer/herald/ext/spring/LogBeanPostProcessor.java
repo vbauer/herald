@@ -9,11 +9,17 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
 
 public class LogBeanPostProcessor implements BeanPostProcessor {
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Object postProcessBeforeInitialization(final Object bean, final String beanName) {
         return LoggerInjector.inject(bean);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Object postProcessAfterInitialization(final Object bean, final String beanName) {
         return bean;

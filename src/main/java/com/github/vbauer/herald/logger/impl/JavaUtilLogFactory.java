@@ -20,7 +20,10 @@ public class JavaUtilLogFactory extends SimpleLogFactory {
         super(LOGGER_CLASS_NAME, FACTORY_CLASS_NAME, FACTORY_METHOD_NAME);
     }
 
-    
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Object createLogger(final Class<?> clazz) {
         return createLogger(clazz.getSimpleName());

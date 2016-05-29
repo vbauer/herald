@@ -21,6 +21,9 @@ public class FluentLogFactory extends SimpleLogFactory {
     }
 
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Object createLogger(final Class<?> clazz) {
         return createLogger(clazz.getSimpleName());

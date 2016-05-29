@@ -22,6 +22,9 @@ public class LoggerInstantiationException extends HeraldException {
     }
 
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String getMessage() {
         return String.format("Can't create logger using factory %s", getLoggerFactory());

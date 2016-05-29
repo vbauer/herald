@@ -20,6 +20,9 @@ public class MissedLogFactoryException extends HeraldException {
     }
 
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String getMessage() {
         return String.format("Can not find log factory for logger %s", getLoggerClass());
