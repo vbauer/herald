@@ -10,6 +10,8 @@ import com.google.inject.spi.TypeEncounter;
 import com.google.inject.spi.TypeListener;
 
 /**
+ * Guice {@link AbstractModule} which injects initialized loggers in beans.
+ *
  * @author Vladislav Bauer
  */
 

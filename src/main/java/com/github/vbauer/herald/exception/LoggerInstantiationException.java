@@ -3,6 +3,9 @@ package com.github.vbauer.herald.exception;
 import com.github.vbauer.herald.logger.LogFactory;
 
 /**
+ * An exception class for situations when we do not have possibility to create logger.
+ * Some problems were occurred during logger creation.
+ *
  * @author Vladislav Bauer
  */
 
@@ -17,6 +20,11 @@ public class LoggerInstantiationException extends HeraldException {
     }
 
 
+    /**
+     * Get logger factory, see {@link LogFactory}.
+     *
+     * @return logger factory
+     */
     public LogFactory getLoggerFactory() {
         return loggerFactory;
     }

@@ -4,6 +4,8 @@ import com.github.vbauer.herald.util.LoggerInjector;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 
 /**
+ * Spring {@link BeanPostProcessor} which injects initialized loggers in beans.
+ *
  * @author Vladislav Bauer
  */
 

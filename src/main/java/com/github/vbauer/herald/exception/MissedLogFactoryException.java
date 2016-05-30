@@ -1,6 +1,8 @@
 package com.github.vbauer.herald.exception;
 
 /**
+ * An exception class for situations when log factory could not be detected for the given logger.
+ *
  * @author Vladislav Bauer
  */
 
@@ -15,6 +17,11 @@ public class MissedLogFactoryException extends HeraldException {
     }
 
 
+    /**
+     * Get logger class.
+     *
+     * @return logger class
+     */
     public Class<?> getLoggerClass() {
         return loggerClass;
     }

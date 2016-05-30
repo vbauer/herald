@@ -1,6 +1,8 @@
 package com.github.vbauer.herald.exception;
 
 /**
+ * Basic class for hierarchy of Herald exceptions.
+ *
  * @author Vladislav Bauer
  */
 
