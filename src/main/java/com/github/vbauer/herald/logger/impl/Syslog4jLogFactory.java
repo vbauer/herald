@@ -4,9 +4,9 @@ import com.github.vbauer.herald.logger.LogFactory;
 import com.github.vbauer.jackdaw.annotation.JService;
 
 /**
- * @author Vladislav Bauer
- *
  * Additional information how to configure protocols: http://syslog4j.org/docs/examples/examples.html
+ *
+ * @author Vladislav Bauer
  */
 
 @JService(LogFactory.class)

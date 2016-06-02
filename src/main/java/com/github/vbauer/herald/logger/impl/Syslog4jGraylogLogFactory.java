@@ -5,8 +5,8 @@ import com.github.vbauer.jackdaw.annotation.JService;
 
 /**
  * <b>IMPORTANT:</b>
- * This is a repackaged fork used in Graylog2, as the original package has no recent versions
- * published to Maven Central.
+ * "org.graylog2.syslog4j" is a repackaged fork used in Graylog2, as the original package has no
+ * recent versions published to Maven Central.
  *
  * @author Vladislav Bauer
  */
