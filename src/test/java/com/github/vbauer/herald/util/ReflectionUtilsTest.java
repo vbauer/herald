@@ -56,4 +56,5 @@ public class ReflectionUtilsTest extends BasicTest {
         assertThat(ReflectionUtils.setAccessible(null, true), equalTo(false));
         assertThat(ReflectionUtils.setAccessible(Object.class.getConstructors()[0], true), equalTo(true));
     }
+
 }

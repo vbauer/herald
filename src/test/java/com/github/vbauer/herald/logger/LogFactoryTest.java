@@ -13,7 +13,7 @@ import com.github.vbauer.herald.logger.impl.Slf4jExtLogFactory;
 import com.github.vbauer.herald.logger.impl.Slf4jLogFactory;
 import com.github.vbauer.herald.logger.impl.Syslog4jGraylogLogFactory;
 import com.github.vbauer.herald.logger.impl.Syslog4jLogFactory;
-import com.github.vbauer.herald.util.LoggerInjector;
+import com.github.vbauer.herald.injector.LoggerInjector;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.equalTo;

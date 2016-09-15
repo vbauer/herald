@@ -1,6 +1,6 @@
 package com.github.vbauer.herald.ext.guice;
 
-import com.github.vbauer.herald.util.LoggerInjector;
+import com.github.vbauer.herald.injector.LoggerInjector;
 import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
 import com.google.inject.matcher.Matcher;

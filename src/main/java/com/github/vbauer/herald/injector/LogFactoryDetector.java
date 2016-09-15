@@ -1,4 +1,4 @@
-package com.github.vbauer.herald.util;
+package com.github.vbauer.herald.injector;
 
 import com.github.vbauer.herald.logger.LogFactory;
 
@@ -8,9 +8,9 @@ import java.util.Collection;
  * @author Vladislav Bauer
  */
 
-public final class LogFactoryUtils {
+public final class LogFactoryDetector {
 
-    private LogFactoryUtils() {
+    private LogFactoryDetector() {
         throw new UnsupportedOperationException();
     }
 

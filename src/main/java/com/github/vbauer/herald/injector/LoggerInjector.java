@@ -1,9 +1,11 @@
-package com.github.vbauer.herald.util;
+package com.github.vbauer.herald.injector;
 
 import com.github.vbauer.herald.annotation.Log;
 import com.github.vbauer.herald.exception.LoggerInstantiationException;
 import com.github.vbauer.herald.exception.MissedLogFactoryException;
 import com.github.vbauer.herald.logger.LogFactory;
+import com.github.vbauer.herald.util.ReflectionUtils;
+import com.github.vbauer.herald.util.ServiceLoaderUtils;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
@@ -14,8 +16,7 @@ import java.util.Collection;
 
 public final class LoggerInjector {
 
-    private static final Collection<LogFactory> LOG_FACTORIES =
-        ServiceLoaderUtils.load(LogFactory.class);
+    private static final Collection<LogFactory> LOG_FACTORIES = loadLogFactories();
 
 
     private LoggerInjector() {
@@ -32,12 +33,14 @@ public final class LoggerInjector {
     }
 
     public static <T> T inject(final T bean) {
-        final Class<?> beanClass = bean.getClass();
-        final Field[] declaredFields = beanClass.getDeclaredFields();
+        if (bean != null) {
+            final Class<?> beanClass = bean.getClass();
+            final Field[] declaredFields = beanClass.getDeclaredFields();
 
-        for (final Field field : declaredFields) {
-            if (needToInjectLogger(beanClass, field)) {
-                injectLogger(bean, field);
+            for (final Field field : declaredFields) {
+                if (needToInjectLogger(beanClass, field)) {
+                    injectLogger(bean, field);
+                }
             }
         }
         return bean;
@@ -52,7 +55,7 @@ public final class LoggerInjector {
         final boolean hasAnnotation = beanClass.getAnnotation(Log.class) != null;
         if (hasAnnotation) {
             final Class<?> fieldType = field.getType();
-            return LogFactoryUtils.hasCompatible(LOG_FACTORIES, fieldType);
+            return LogFactoryDetector.hasCompatible(LOG_FACTORIES, fieldType);
         }
         return field.getAnnotation(Log.class) != null;
     }
@@ -86,7 +89,7 @@ public final class LoggerInjector {
     ) {
         // Find corresponding logger factory.
         final LogFactory logFactory =
-            LogFactoryUtils.findCompatible(LOG_FACTORIES, loggerClass);
+            LogFactoryDetector.findCompatible(LOG_FACTORIES, loggerClass);
 
         if (logFactory == null) {
             throw new MissedLogFactoryException(loggerClass);
@@ -100,6 +103,10 @@ public final class LoggerInjector {
             throw new LoggerInstantiationException(logFactory);
         }
         return logger;
+    }
+
+    private static Collection<LogFactory> loadLogFactories() {
+        return ServiceLoaderUtils.load(LogFactory.class);
     }
 
 }

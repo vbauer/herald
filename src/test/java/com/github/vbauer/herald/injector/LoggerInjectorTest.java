@@ -1,4 +1,4 @@
-package com.github.vbauer.herald.util;
+package com.github.vbauer.herald.injector;
 
 import com.github.vbauer.herald.core.BasicTest;
 import com.github.vbauer.herald.exception.MissedLogFactoryException;
@@ -7,11 +7,12 @@ import com.github.vbauer.herald.ext.spring.bean.ClassLogBean;
 import com.github.vbauer.herald.ext.spring.bean.IncorrectLogBean;
 import com.github.vbauer.herald.ext.spring.bean.LogBean;
 import com.github.vbauer.herald.ext.spring.bean.NamedLogBean;
-import org.junit.Assert;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 /**
  * @author Vadislav Bauer
@@ -24,9 +25,14 @@ public class LoggerInjectorTest extends BasicTest {
         checkUtilConstructorContract(LoggerInjector.class);
     }
 
+    @Test
+    public void testNullBean() {
+        assertThat(LoggerInjector.inject((Object) null), nullValue());
+    }
+
     @Test(expected = MissedLogFactoryException.class)
     public void testIncorrectLogger() {
-        Assert.fail(LoggerInjector.inject(new IncorrectLogBean()).toString());
+        fail(LoggerInjector.inject(new IncorrectLogBean()).toString());
     }
 
     @Test

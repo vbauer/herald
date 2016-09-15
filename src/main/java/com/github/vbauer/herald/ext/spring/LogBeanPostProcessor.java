@@ -1,6 +1,6 @@
 package com.github.vbauer.herald.ext.spring;
 
-import com.github.vbauer.herald.util.LoggerInjector;
+import com.github.vbauer.herald.injector.LoggerInjector;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 
 /**
