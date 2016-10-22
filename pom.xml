@@ -52,7 +52,7 @@
         <java.version>1.7</java.version>
 
         <spring.version>4.3.2.RELEASE</spring.version>
-        <spring.boot.version>1.4.0.RELEASE</spring.boot.version>
+        <spring.boot.version>1.4.1.RELEASE</spring.boot.version>
         <guice.version>4.1.0</guice.version>
         <jackdaw.version>1.0.9</jackdaw.version>
 
@@ -63,7 +63,7 @@
         <commons.logging.version>1.2</commons.logging.version>
         <logback.version>1.1.7</logback.version>
         <log4j.version>1.2.17</log4j.version>
-        <log4j2.version>2.6.2</log4j2.version>
+        <log4j2.version>2.7</log4j2.version>
         <slf4j.version>1.7.21</slf4j.version>
         <jboss.logging.version>3.3.0.Final</jboss.logging.version>
         <syslog4j.version>0.9.30</syslog4j.version>
@@ -75,10 +75,10 @@
         <maven.source.plugin.version>3.0.1</maven.source.plugin.version>
         <maven.surefire.plugin.version>2.19.1</maven.surefire.plugin.version>
         <maven.checkstyle.plugin.version>2.17</maven.checkstyle.plugin.version>
-        <maven.pmd.plugin.version>3.6</maven.pmd.plugin.version>
+        <maven.pmd.plugin.version>3.7</maven.pmd.plugin.version>
         <maven.animal.sniffer.plugin.version>1.15</maven.animal.sniffer.plugin.version>
         <maven.jacoco.plugin.version>0.7.7.201606060606</maven.jacoco.plugin.version>
-        <maven.coveralls.plugin.version>4.2.0</maven.coveralls.plugin.version>
+        <maven.coveralls.plugin.version>4.3.0</maven.coveralls.plugin.version>
         <maven.serviceloader.plugin.version>1.0.7</maven.serviceloader.plugin.version>
         <maven.project.info.reports.plugin.version>2.9</maven.project.info.reports.plugin.version>
         <maven.javadoc.plugin.version>2.10.4</maven.javadoc.plugin.version>
