@@ -50,7 +50,7 @@ private Logger logger;
 
 ## Supported logging frameworks
 
-* [JavaTM 2 platform's core logging framework](http://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html)
+* [JavaTM 2 platform's core logging framework](http://docs.oracle.com/javase/8/docs/api/java/util/logging/package-summary.html)
 * [Apache Commons Logging](http://commons.apache.org/proper/commons-logging)
 * [Simple Logging Facade for Java (SLF4J)](http://www.slf4j.org)
 * [SLF4J Extended logger](http://www.slf4j.org/extensions.html#extended_logger)
