@@ -17,8 +17,6 @@ import com.google.inject.spi.TypeListener;
 
 public class LogModule extends AbstractModule {
 
-    private static final InjectionListener<Object> INJECTION_LISTENER = createInjectionListener();
-
     private final Matcher<Object> typeMatcher;
 
 
@@ -44,16 +42,7 @@ public class LogModule extends AbstractModule {
         return new TypeListener() {
             @Override
             public <I> void hear(final TypeLiteral<I> typeLiteral, final TypeEncounter<I> typeEncounter) {
-                typeEncounter.register(INJECTION_LISTENER);
-            }
-        };
-    }
-
-    private static InjectionListener<Object> createInjectionListener() {
-        return new InjectionListener<Object>() {
-            @Override
-            public void afterInjection(final Object bean) {
-                LoggerInjector.inject(bean);
+                typeEncounter.register((InjectionListener<I>) LoggerInjector::inject);
             }
         };
     }

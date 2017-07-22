@@ -14,20 +14,18 @@ import static org.junit.Assert.assertThat;
  */
 public class LogTest {
 
-    private static final String TEST_VALUE = "TEST_VALUE";
-    private static final boolean TEST_REQUIRED = true;
-
-
     @Test
     public void testContract() {
-        final Log log = createLogObject();
+        final String value = "TEST_VALUE";
+        final boolean required = true;
+        final Log log = createLogObject(value, required);
 
-        assertThat(log.value(), equalTo(TEST_VALUE));
-        assertThat(log.required(), equalTo(TEST_REQUIRED));
+        assertThat(log.value(), equalTo(value));
+        assertThat(log.required(), equalTo(required));
     }
 
 
-    private Log createLogObject() {
+    private Log createLogObject(final String value, final boolean required) {
         return new Log() {
             /**
              * {@inheritDoc}
@@ -42,7 +40,7 @@ public class LogTest {
              */
             @Override
             public String value() {
-                return TEST_VALUE;
+                return value;
             }
 
             /**
@@ -50,7 +48,7 @@ public class LogTest {
              */
             @Override
             public boolean required() {
-                return TEST_REQUIRED;
+                return required;
             }
         };
     }
