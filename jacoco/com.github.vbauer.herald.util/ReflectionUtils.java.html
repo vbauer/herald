@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ReflectionUtils.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">herald</a> &gt; <a href="index.source.html" class="el_package">com.github.vbauer.herald.util</a> &gt; <span class="el_source">ReflectionUtils.java</span></div><h1>ReflectionUtils.java</h1><pre class="source lang-java linenums">package com.github.vbauer.herald.util;
+
+import java.lang.annotation.Annotation;
+import java.lang.reflect.AccessibleObject;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
+/**
+ * @author Vladislav Bauer
+ */
+
+public final class ReflectionUtils {
+
+<span class="fc" id="L14">    private ReflectionUtils() {</span>
+<span class="fc" id="L15">        throw new UnsupportedOperationException();</span>
+    }
+
+
+    public static boolean isAssignableFrom(final String className, final Class&lt;?&gt; from) {
+        try {
+<span class="fc" id="L21">            final Class&lt;?&gt; clazz = Class.forName(className);</span>
+<span class="fc" id="L22">            return clazz.isAssignableFrom(from);</span>
+<span class="fc" id="L23">        } catch (final Throwable ex) {</span>
+<span class="fc" id="L24">            return false;</span>
+        }
+    }
+
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public  static &lt;I, O&gt; O invokeStatic(final String className, final String methodName, final I argument) {
+        try {
+<span class="fc" id="L31">            final Class&lt;?&gt; clazz = Class.forName(className);</span>
+<span class="fc" id="L32">            final Class&lt;?&gt; argumentClass = argument.getClass();</span>
+
+<span class="fc" id="L34">            final Method method = clazz.getDeclaredMethod(methodName, argumentClass);</span>
+<span class="fc" id="L35">            return (O) method.invoke(null, argument);</span>
+<span class="fc" id="L36">        } catch (final Exception ex) {</span>
+<span class="nc" id="L37">            return handleReflectionException(ex);</span>
+        }
+    }
+
+    public static &lt;T&gt; T handleReflectionException(final Throwable ex) {
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        if (ex instanceof RuntimeException) {</span>
+<span class="fc" id="L43">            throw (RuntimeException) ex;</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">        } else if (ex instanceof Error) {</span>
+<span class="fc" id="L45">            throw (Error) ex;</span>
+        }
+<span class="fc" id="L47">        throw new RuntimeException(ex);</span>
+    }
+
+    public static &lt;T extends Annotation&gt; T findAnnotation(
+        final Class&lt;T&gt; annotationClass, final Class&lt;?&gt; beanClass, final Field field
+    ) {
+<span class="fc" id="L53">        final T fieldAnnotation = field.getAnnotation(annotationClass);</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">        return fieldAnnotation == null ? beanClass.getAnnotation(annotationClass) : fieldAnnotation;</span>
+    }
+
+    public static boolean setAccessible(final AccessibleObject object, final boolean accessible) {
+        try {
+<span class="fc" id="L59">            object.setAccessible(accessible);</span>
+<span class="fc" id="L60">            return true;</span>
+<span class="fc" id="L61">        } catch (final Throwable ignored) {</span>
+            // Ignored.
+<span class="fc" id="L63">            return false;</span>
+        }
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

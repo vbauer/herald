@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LoggerInjector.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">herald</a> &gt; <a href="index.source.html" class="el_package">com.github.vbauer.herald.injector</a> &gt; <span class="el_source">LoggerInjector.java</span></div><h1>LoggerInjector.java</h1><pre class="source lang-java linenums">package com.github.vbauer.herald.injector;
+
+import com.github.vbauer.herald.annotation.Log;
+import com.github.vbauer.herald.exception.LoggerInstantiationException;
+import com.github.vbauer.herald.exception.MissedLogFactoryException;
+import com.github.vbauer.herald.logger.LogFactory;
+import com.github.vbauer.herald.util.ReflectionUtils;
+import com.github.vbauer.herald.util.ServiceLoaderUtils;
+
+import java.lang.reflect.Field;
+import java.util.Collection;
+
+/**
+ * @author Vladislav Bauer
+ */
+
+public final class LoggerInjector {
+
+<span class="fc" id="L19">    private static final Collection&lt;LogFactory&gt; LOG_FACTORIES = loadLogFactories();</span>
+
+
+<span class="fc" id="L22">    private LoggerInjector() {</span>
+<span class="fc" id="L23">        throw new UnsupportedOperationException();</span>
+    }
+
+
+    public static void inject(final Object... beans) {
+<span class="fc bfc" id="L28" title="All 2 branches covered.">        if (beans != null) {</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">            for (final Object bean : beans) {</span>
+<span class="fc" id="L30">                inject(bean);</span>
+            }
+        }
+<span class="fc" id="L33">    }</span>
+
+    public static &lt;T&gt; T inject(final T bean) {
+<span class="fc bfc" id="L36" title="All 2 branches covered.">        if (bean != null) {</span>
+<span class="fc" id="L37">            final Class&lt;?&gt; beanClass = bean.getClass();</span>
+<span class="fc" id="L38">            final Field[] declaredFields = beanClass.getDeclaredFields();</span>
+
+<span class="fc bfc" id="L40" title="All 2 branches covered.">            for (final Field field : declaredFields) {</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">                if (needToInjectLogger(beanClass, field)) {</span>
+<span class="fc" id="L42">                    injectLogger(bean, field);</span>
+                }
+            }
+        }
+<span class="fc" id="L46">        return bean;</span>
+    }
+
+
+    /*
+     * Internal API.
+     */
+
+    private static boolean needToInjectLogger(final Class&lt;?&gt; beanClass, final Field field) {
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        final boolean hasAnnotation = beanClass.getAnnotation(Log.class) != null;</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">        if (hasAnnotation) {</span>
+<span class="fc" id="L57">            final Class&lt;?&gt; fieldType = field.getType();</span>
+<span class="fc" id="L58">            return LogFactoryDetector.hasCompatible(LOG_FACTORIES, fieldType);</span>
+        }
+<span class="fc bfc" id="L60" title="All 2 branches covered.">        return field.getAnnotation(Log.class) != null;</span>
+    }
+
+    private static void injectLogger(final Object bean, final Field field) {
+<span class="fc" id="L64">        final boolean isAccessible = field.isAccessible();</span>
+<span class="fc" id="L65">        ReflectionUtils.setAccessible(field, true);</span>
+
+        // Read context parameters.
+<span class="fc" id="L68">        final Class&lt;?&gt; beanClass = bean.getClass();</span>
+<span class="fc" id="L69">        final Class&lt;?&gt; loggerClass = field.getType();</span>
+<span class="fc" id="L70">        final Log annotation = ReflectionUtils.findAnnotation(Log.class, beanClass, field);</span>
+
+<span class="fc" id="L72">        final boolean required = annotation.required();</span>
+<span class="fc" id="L73">        final String loggerName = annotation.value();</span>
+
+        try {
+<span class="fc" id="L76">            final Object logger = createLogger(beanClass, loggerClass, loggerName);</span>
+<span class="fc" id="L77">            field.set(bean, logger);</span>
+<span class="fc" id="L78">        } catch (final Throwable ex) {</span>
+<span class="pc bpc" id="L79" title="1 of 2 branches missed.">            if (required) {</span>
+<span class="nc" id="L80">                ReflectionUtils.handleReflectionException(ex);</span>
+            }
+        } finally {
+<span class="fc" id="L83">            ReflectionUtils.setAccessible(field, isAccessible);</span>
+        }
+<span class="fc" id="L85">    }</span>
+
+    private static Object createLogger(
+        final Class&lt;?&gt; beanClass, final Class&lt;?&gt; loggerClass, final String loggerName
+    ) {
+        // Find corresponding logger factory.
+<span class="fc" id="L91">        final LogFactory logFactory =</span>
+<span class="fc" id="L92">            LogFactoryDetector.findCompatible(LOG_FACTORIES, loggerClass);</span>
+
+<span class="fc bfc" id="L94" title="All 2 branches covered.">        if (logFactory == null) {</span>
+<span class="fc" id="L95">            throw new MissedLogFactoryException(loggerClass);</span>
+        }
+
+        // Create logger.
+<span class="fc bfc" id="L99" title="All 2 branches covered.">        final Object logger = !loggerName.isEmpty()</span>
+<span class="fc" id="L100">            ? logFactory.createLogger(loggerName) : logFactory.createLogger(beanClass);</span>
+
+<span class="fc bfc" id="L102" title="All 2 branches covered.">        if (logger == null) {</span>
+<span class="fc" id="L103">            throw new LoggerInstantiationException(logFactory);</span>
+        }
+<span class="fc" id="L105">        return logger;</span>
+    }
+
+    private static Collection&lt;LogFactory&gt; loadLogFactories() {
+<span class="fc" id="L109">        return ServiceLoaderUtils.load(LogFactory.class);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

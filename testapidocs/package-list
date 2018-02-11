@@ -1,0 +1,12 @@
+com.github.vbauer.herald.annotation
+com.github.vbauer.herald.core
+com.github.vbauer.herald.exception
+com.github.vbauer.herald.ext.guice
+com.github.vbauer.herald.ext.spring
+com.github.vbauer.herald.ext.spring.bean
+com.github.vbauer.herald.ext.spring.context
+com.github.vbauer.herald.injector
+com.github.vbauer.herald.logger
+com.github.vbauer.herald.logger.checker
+com.github.vbauer.herald.logger.empty
+com.github.vbauer.herald.util
