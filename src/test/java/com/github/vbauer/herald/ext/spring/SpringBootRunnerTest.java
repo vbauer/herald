@@ -7,7 +7,7 @@ import org.springframework.boot.Banner;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
 
-import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -25,7 +25,7 @@ public class SpringBootRunnerTest extends BasicTest {
             .sources(SpringBootTestContext.class)
             .run();
 
-        assertThat(context, equalTo(context));
+        assertThat(context, notNullValue());
     }
 
 }

@@ -1,7 +1,6 @@
 package com.github.vbauer.herald.injector;
 
 import com.github.vbauer.herald.core.BasicTest;
-import com.github.vbauer.herald.logger.LogFactory;
 import org.junit.Test;
 
 import java.util.Collections;
@@ -17,22 +16,22 @@ import static org.junit.Assert.assertThat;
 public class LogFactoryDetectorTest extends BasicTest {
 
     @Test
-    public void testConstructorContract() throws Exception {
+    public void testConstructorContract() {
         checkUtilConstructorContract(LogFactoryDetector.class);
     }
 
     @Test
     public void testFindCompatible() {
         assertThat(LogFactoryDetector.findCompatible(null, null), nullValue());
-        assertThat(LogFactoryDetector.findCompatible(Collections.<LogFactory>emptyList(), null), nullValue());
-        assertThat(LogFactoryDetector.findCompatible(Collections.<LogFactory>emptyList(), Object.class), nullValue());
+        assertThat(LogFactoryDetector.findCompatible(Collections.emptyList(), null), nullValue());
+        assertThat(LogFactoryDetector.findCompatible(Collections.emptyList(), Object.class), nullValue());
     }
 
     @Test
     public void testHasCompatible() {
         assertThat(LogFactoryDetector.hasCompatible(null, null), equalTo(false));
-        assertThat(LogFactoryDetector.hasCompatible(Collections.<LogFactory>emptyList(), null), equalTo(false));
-        assertThat(LogFactoryDetector.hasCompatible(Collections.<LogFactory>emptyList(), Object.class), equalTo(false));
+        assertThat(LogFactoryDetector.hasCompatible(Collections.emptyList(), null), equalTo(false));
+        assertThat(LogFactoryDetector.hasCompatible(Collections.emptyList(), Object.class), equalTo(false));
     }
 
 }

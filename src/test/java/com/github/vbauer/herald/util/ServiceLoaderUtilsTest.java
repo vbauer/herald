@@ -26,7 +26,7 @@ public class ServiceLoaderUtilsTest extends BasicTest {
     }
 
     @Test
-    public void testLoad() throws Exception {
+    public void testLoad() {
         final Collection<LogFactory> factories = ServiceLoaderUtils.load(LogFactory.class);
         assertThat(factories, hasSize(LOGGERS_COUNT));
     }

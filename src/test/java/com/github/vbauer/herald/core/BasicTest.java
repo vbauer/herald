@@ -11,7 +11,7 @@ import org.junit.runners.BlockJUnit4ClassRunner;
 @RunWith(BlockJUnit4ClassRunner.class)
 public abstract class BasicTest {
 
-    protected final void checkUtilConstructorContract(final Class<?> utilClass) throws Exception {
+    protected final void checkUtilConstructorContract(final Class<?> utilClass) {
         PrivateConstructorChecker
             .forClass(utilClass)
             .expectedTypeOfException(UnsupportedOperationException.class)
