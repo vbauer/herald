@@ -344,9 +344,6 @@
                         <artifactId>maven-pmd-plugin</artifactId>
                         <version>${maven.pmd.plugin.version}</version>
                         <configuration>
-                            <rulesets>
-                                <ruleset>src/test/resources/pmd.xml</ruleset>
-                            </rulesets>
                             <linkXRef>false</linkXRef>
                             <failOnViolation>true</failOnViolation>
                             <printFailingErrors>true</printFailingErrors>
