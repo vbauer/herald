@@ -51,9 +51,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
 
-        <spring.version>5.0.7.RELEASE</spring.version>
+        <spring.version>5.1.2.RELEASE</spring.version>
         <spring.boot.version>2.0.3.RELEASE</spring.boot.version>
-        <guice.version>4.2.0</guice.version>
+        <guice.version>4.2.2</guice.version>
         <jackdaw.version>1.1.2</jackdaw.version>
 
         <junit.version>4.12</junit.version>
@@ -63,7 +63,7 @@
         <commons.logging.version>1.2</commons.logging.version>
         <logback.version>1.2.3</logback.version>
         <log4j.version>1.2.17</log4j.version>
-        <log4j2.version>2.11.0</log4j2.version>
+        <log4j2.version>2.11.1</log4j2.version>
         <slf4j.version>1.7.25</slf4j.version>
         <jboss.logging.version>3.3.2.Final</jboss.logging.version>
         <syslog4j.version>0.9.30</syslog4j.version>
