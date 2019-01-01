@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  */
 
 @Configuration
-@ComponentScan(basePackages = "com.github.vbauer.herald")
+@ComponentScan(basePackages = "com.github.vbauer.herald.ext.spring.bean")
 public class SpringTestContext {
 
     @Bean
