@@ -13,16 +13,17 @@
     <module name="NewlineAtEndOfFile">
         <property name="lineSeparator" value="lf"/>
     </module>
-    <module name="SuppressionCommentFilter">
-        <property name="offCommentFormat" value="CHECKSTYLE.OFF\: ([\w\|]+)"/>
-        <property name="onCommentFormat" value="CHECKSTYLE.ON\: ([\w\|]+)"/>
-        <property name="checkFormat" value="$1"/>
-    </module>
     <module name="Translation"/>
 
     <!--<module name="StrictDuplicateCode"/>-->
 
     <module name="TreeWalker">
+        <module name="SuppressionCommentFilter">
+            <property name="offCommentFormat" value="CHECKSTYLE.OFF\: ([\w\|]+)"/>
+            <property name="onCommentFormat" value="CHECKSTYLE.ON\: ([\w\|]+)"/>
+            <property name="checkFormat" value="$1"/>
+        </module>
+
         <module name="AnnotationUseStyle"/>
         <module name="AnonInnerLength"/>
         <module name="ArrayTrailingComma"/>
@@ -46,7 +47,6 @@
         <module name="EqualsHashCode"/>
         <module name="ExecutableStatementCount"/>
         <module name="ExplicitInitialization"/>
-        <module name="FileContentsHolder"/>
         <module name="FallThrough"/>
         <module name="FinalClass"/>
         <module name="FinalLocalVariable"/>
