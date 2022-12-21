@@ -61,7 +61,7 @@
         <checker.version>1.2.0</checker.version>
 
         <commons.logging.version>1.2</commons.logging.version>
-        <logback.version>1.2.3</logback.version>
+        <logback.version>1.2.9</logback.version>
         <log4j.version>1.2.17</log4j.version>
         <log4j2.version>2.12.1</log4j2.version>
         <slf4j.version>1.7.26</slf4j.version>
